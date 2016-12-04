@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Fiap.Leilao.BancoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Negociacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Vendedor" Type="int" />
+          <Property Name="Id_Comprador" Type="int" />
+          <Property Name="Id_Produto" Type="int" />
+          <Property Name="Valor_Vendedor" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Valor_Produto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar(max)" />
+          <Property Name="Imagem" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Senha" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CPF" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Complemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dt_Nascimento" Type="date" Nullable="false" />
+          <Property Name="Telefone" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Negociacao_Cliente">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Negociacao" Type="Self.Negociacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Negociacao">
+              <PropertyRef Name="Id_Comprador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Negociacao_Produto">
+          <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+          <End Role="Negociacao" Type="Self.Negociacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Negociacao">
+              <PropertyRef Name="Id_Produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Negociacao_Vendedor">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Negociacao" Type="Self.Negociacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Negociacao">
+              <PropertyRef Name="Id_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FiapLeilaoBancoModelStoreContainer">
+          <EntitySet Name="Negociacao" EntityType="Self.Negociacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Negociacao_Cliente" Association="Self.FK_Negociacao_Cliente">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Negociacao" EntitySet="Negociacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Negociacao_Produto" Association="Self.FK_Negociacao_Produto">
+            <End Role="Produto" EntitySet="Produto" />
+            <End Role="Negociacao" EntitySet="Negociacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Negociacao_Vendedor" Association="Self.FK_Negociacao_Vendedor">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Negociacao" EntitySet="Negociacao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Fiap.Leilao.BancoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Negociacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Vendedor" Type="Int32" />
+          <Property Name="Id_Comprador" Type="Int32" />
+          <Property Name="Id_Produto" Type="Int32" />
+          <Property Name="Valor_Vendedor" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Valor_Produto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Negociacao_Cliente" FromRole="Negociacao" ToRole="Usuario" />
+          <NavigationProperty Name="Produto" Relationship="Self.FK_Negociacao_Produto" FromRole="Negociacao" ToRole="Produto" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_Negociacao_Vendedor" FromRole="Negociacao" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Imagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Negociacaos" Relationship="Self.FK_Negociacao_Produto" FromRole="Produto" ToRole="Negociacao" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPF" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CEP" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Complemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dt_Nascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Negociacaos" Relationship="Self.FK_Negociacao_Cliente" FromRole="Usuario" ToRole="Negociacao" />
+          <NavigationProperty Name="Negociacaos1" Relationship="Self.FK_Negociacao_Vendedor" FromRole="Usuario" ToRole="Negociacao" />
+        </EntityType>
+        <Association Name="FK_Negociacao_Cliente">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Negociacao" Type="Self.Negociacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Negociacao">
+              <PropertyRef Name="Id_Comprador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Negociacao_Produto">
+          <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+          <End Role="Negociacao" Type="Self.Negociacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Negociacao">
+              <PropertyRef Name="Id_Produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Negociacao_Vendedor">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Negociacao" Type="Self.Negociacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Negociacao">
+              <PropertyRef Name="Id_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LeilaoContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Negociacaos" EntityType="Self.Negociacao" />
+          <EntitySet Name="Produtoes" EntityType="Self.Produto" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Negociacao_Cliente" Association="Self.FK_Negociacao_Cliente">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Negociacao" EntitySet="Negociacaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Negociacao_Produto" Association="Self.FK_Negociacao_Produto">
+            <End Role="Produto" EntitySet="Produtoes" />
+            <End Role="Negociacao" EntitySet="Negociacaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Negociacao_Vendedor" Association="Self.FK_Negociacao_Vendedor">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Negociacao" EntitySet="Negociacaos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FiapLeilaoBancoModelStoreContainer" CdmEntityContainer="LeilaoContext">
+          <EntitySetMapping Name="Negociacaos">
+            <EntityTypeMapping TypeName="Fiap.Leilao.BancoModel.Negociacao">
+              <MappingFragment StoreEntitySet="Negociacao">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Vendedor" ColumnName="Id_Vendedor" />
+                <ScalarProperty Name="Id_Comprador" ColumnName="Id_Comprador" />
+                <ScalarProperty Name="Id_Produto" ColumnName="Id_Produto" />
+                <ScalarProperty Name="Valor_Vendedor" ColumnName="Valor_Vendedor" />
+                <ScalarProperty Name="Valor_Produto" ColumnName="Valor_Produto" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produtoes">
+            <EntityTypeMapping TypeName="Fiap.Leilao.BancoModel.Produto">
+              <MappingFragment StoreEntitySet="Produto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Fiap.Leilao.BancoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Dt_Nascimento" ColumnName="Dt_Nascimento" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
