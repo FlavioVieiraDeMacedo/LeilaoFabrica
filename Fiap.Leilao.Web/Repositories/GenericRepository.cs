@@ -26,7 +26,7 @@ namespace Fiap.Leilao.Web.Repositories
             _context.Entry(entidade).State = EntityState.Modified;
         }
 
-        public ICollection<T> BuscaPor(Expression<Func<T, bool>> filtro)
+        public ICollection<T> BuscarPor(Expression<Func<T, bool>> filtro)
         {
             return _dbSet.Where(filtro).ToList();
         }

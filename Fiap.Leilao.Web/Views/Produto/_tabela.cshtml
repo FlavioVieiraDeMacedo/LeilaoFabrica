@@ -1,0 +1,26 @@
+﻿@model Fiap.Leilao.Web.ViewModels.ProdutoViewModel
+@foreach (var item in Model.Produtos)
+{
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Nome</td>
+        <td>@item.Descricao</td>
+        <td>@item.Imagem</td>
+        <td>
+            <button onclick="Nome2.value = '@item.Nome',Descricao2.value = '@item.Descricao',Imagem2.value = '@item.Imagem', Id.value = @item.Id" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalEditar">
+                Editar
+            </button>
+
+            <button onclick="produtoId.value = @item.Id" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                Excluir
+            </button>
+        </td>
+    </tr>
+}
+@if (Request.IsAjaxRequest())
+{
+    <script>
+        someBotao();
+
+    </script>
+}

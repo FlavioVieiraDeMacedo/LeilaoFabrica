@@ -14,6 +14,6 @@ namespace Fiap.Leilao.Web.Repositories
         void Remover(int id);
         ICollection<T> Listar();
         T BuscarPorId(int id);
-        ICollection<T> BuscaPor(Expression<Func<T, bool>> filtro);
+        ICollection<T> BuscarPor(Expression<Func<T, bool>> filtro);
     }
 }
