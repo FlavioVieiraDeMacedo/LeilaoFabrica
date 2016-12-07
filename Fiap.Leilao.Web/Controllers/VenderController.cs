@@ -1,4 +1,5 @@
-﻿using Fiap.Leilao.Web.UnitsOfWork;
+﻿using Fiap.Leilao.Web.Models;
+using Fiap.Leilao.Web.UnitsOfWork;
 using Fiap.Leilao.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,11 @@ namespace Fiap.Leilao.Web.Controllers
         [HttpGet]
         public ActionResult Vender()
         {
-            return View();
+            var viewModel = new VendaViewModel()
+            {
+                Produtos = ListarProdutos()
+            };
+            return View(viewModel);
         }
 
         #endregion
@@ -31,6 +36,13 @@ namespace Fiap.Leilao.Web.Controllers
             return View();
         }
 
+        #endregion
+
+        #region PRIVATE
+        public ICollection<Produto> ListarProdutos()
+        {
+            return _unit.ProdutoRepository.Listar();
+        }
         #endregion
     }
 }
