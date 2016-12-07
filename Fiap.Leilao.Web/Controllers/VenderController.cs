@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fiap.Leilao.Web.UnitsOfWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,27 @@ namespace Fiap.Leilao.Web.Controllers
 {
     public class VenderController : Controller
     {
-        // GET: Vender
-        public ActionResult Index()
+        #region FIELDs
+        private UnitOfWork _unit = new UnitOfWork();
+        #endregion
+
+        #region GETs
+        [HttpGet]
+        public ActionResult Vender()
         {
             return View();
         }
+
+        #endregion
+
+        #region POSTs
+
+        [HttpPost]
+        public ActionResult Vender()
+        {
+            return View();
+        }
+
+        #endregion
     }
 }
