@@ -5,6 +5,8 @@
 
 @MeuHelper.Titulo("Vender Produto")
 
+@MeuHelper.Mensagem(Model.Mensagem, Model.TipoMensagem)
+
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <table class="table table-striped">
@@ -31,12 +33,22 @@
                 <h4 class="modal-title" id="myModalLabel">Confirmar Venda de Produto</h4>
             </div>
             <div class="modal-body">
-                Você deve confirma se irá vender este produto antes.
+                Você deve confirma se irá vender este produto antes informando o Valor desejado de Venda.
             </div>
             <div class="modal-footer">
-                @using (Html.BeginForm("ConfirmarVenda", "Vender"))
+                @using (Html.BeginForm())
                 {
-                    <input type="hidden" id="produtoId" name="id" />
+                    <input type="hidden" id="ProdutoId" name="ProdutoId" /> 
+                    <input type="hidden" id="Status" name="Status" value="Em Aberto" />
+                    <input type="hidden" id="VendedorId" name="VendedorId" value="0" /> //este campo deve ser o id do usuário logado  
+                    <div class="form-group">
+                        @Html.LabelFor(v=>v.ValorVendedor)
+                        @Html.TextBoxFor(v=>v.ValorVendedor, new { @class = "form-control" })
+                    </div>               
+                    <div class="form-group">
+                        @Html.LabelFor(v=>v.ValorProduto)
+                        @Html.TextBoxFor(v=>v.ValorProduto, new { @class="form-control" })
+                    </div>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <input type="submit" class="btn btn-success" value="Confirmar" />
                 }

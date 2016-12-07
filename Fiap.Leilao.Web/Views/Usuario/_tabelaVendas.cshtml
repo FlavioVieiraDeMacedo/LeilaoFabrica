@@ -1,0 +1,10 @@
+﻿@model List<Fiap.Leilao.Web.Models.Negociacao>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Produto.Nome</td>
+        <td>@item.Valor_Vendedor</td>
+        <td>@item.Status</td>
+    </tr>
+}

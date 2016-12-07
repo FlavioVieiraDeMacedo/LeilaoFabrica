@@ -1,4 +1,4 @@
-﻿
+﻿@model Fiap.Leilao.Web.ViewModels.DashGenericoViewModel
 @{
     ViewBag.Title = "Painel";
 }
@@ -12,3 +12,21 @@
     </div>
 </div>
 
+@MeuHelper.SubTitulo("Produtos em Venda")
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="_tabelaVendas">
+                @Html.Partial("_tabelaVendas", Model.ProdutosEmVenda)
+            </tbody>
+        </table>
+    </div>
+</div>
