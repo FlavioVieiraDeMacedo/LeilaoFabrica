@@ -66,7 +66,7 @@ namespace Fiap.Leilao.Web.Controllers
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Erro " + e.Message);
+                    Debug.WriteLine("Erro no Post do Vender" + e.Message);
                     vViewModel.Produtos = ListarProdutos();
                     return View(vViewModel);
                 }
