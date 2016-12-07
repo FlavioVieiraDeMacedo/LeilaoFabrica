@@ -1,0 +1,12 @@
+﻿@model List<Fiap.Leilao.Web.Models.Produto>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Nome</td>
+        <td>@item.Descricao</td>
+        <td>
+            <button class="btn btn-success" id="btnVender">Vender</button>
+        </td>
+    </tr>
+}
