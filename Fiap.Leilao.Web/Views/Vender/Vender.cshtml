@@ -3,5 +3,21 @@
     ViewBag.Title = "Vender";
 }
 
-<h2>Vender</h2>
+@MeuHelper.Titulo("Vender Produto")
 
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+                @Html.Partial("_tabela")
+            </tbody>
+        </table>
+    </div>
+</div>
