@@ -7,6 +7,8 @@ namespace Fiap.Leilao.Web.ViewModels
 {
     public class UsuarioViewModel
     {
+        public string Mensagem { get; set; }
+        public string TipoMensagem { get; set; }
 
         #region FIELDS
 
