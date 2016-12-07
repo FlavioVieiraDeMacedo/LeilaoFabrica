@@ -48,16 +48,9 @@ namespace Fiap.Leilao.Web.Controllers
                 {
                     Id_Vendedor = vViewModel.VendedorId,                    
                     Id_Produto = vViewModel.ProdutoId,
-                    Valor_Produto = vViewModel.ValorProduto,
                     Valor_Vendedor = vViewModel.ValorVendedor,
-                    Status = vViewModel.Status,
-                    //Produto = produto,
-                    //tem problemas nessa parte
-                    //aparentemente o banco mesmo como nullable n aceita sem
-                   // Usuario = usuario,
-                   // Usuario1 = usuario1
+                    Status = vViewModel.Status
                 };
-
                 _unit.NegociacaoRepository.Cadastrar(negociacao);
 
                 try
