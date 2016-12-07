@@ -10,6 +10,14 @@ namespace Fiap.Leilao.Web.ViewModels
     {
 
         #region FEILDs
+        public int VendedorId { get; set; }
+        public int ProdutoId { get; set; }
+        public Decimal ValorVendedor { get; set; }
+        public Decimal ValorProduto { get; set; }
+        public string Status { get; set; }
+        #endregion
+
+        #region LISTs
         public ICollection<Produto> Produtos { get; set; }
         #endregion
     }

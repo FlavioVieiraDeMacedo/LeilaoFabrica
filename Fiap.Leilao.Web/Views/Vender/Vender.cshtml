@@ -34,9 +34,19 @@
                 Você deve confirma se irá vender este produto antes.
             </div>
             <div class="modal-footer">
-                @using (Html.BeginForm("ConfirmarVenda", "Vender"))
+                @using (Html.BeginForm("Vender", "Vender"))
                 {
-                    <input type="hidden" id="produtoId" name="id" />
+                    <input type="hidden" id="produtoId" name="id" /> 
+                    <input type="hidden" id="Status" value="Em Aberto" />
+                    <input type="hidden" id="VendedorId" value="1" /> //este campo deve ser o id do usuário logado  
+                    <div class="form-group">
+                        @Html.LabelFor(v=>v.ValorVendedor)
+                        @Html.TextBoxFor(v=>v.ValorVendedor, new { @class = "form-control" })
+                    </div>               
+                    <div class="form-group">
+                        @Html.LabelFor(v=>v.ValorProduto)
+                        @Html.TextBoxFor(v=>v.ValorProduto, new { @class="form-control" })
+                    </div>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <input type="submit" class="btn btn-success" value="Confirmar" />
                 }
