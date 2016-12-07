@@ -269,6 +269,7 @@
     <Content Include="Views\Vender\_tabela.cshtml" />
     <Content Include="Views\Usuario\Painel.cshtml" />
     <Content Include="Views\Comprar\Dashboard.cshtml" />
+    <Content Include="Views\Comprar\_tabela.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

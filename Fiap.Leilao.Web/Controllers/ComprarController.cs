@@ -1,4 +1,5 @@
-﻿using Fiap.Leilao.Web.UnitsOfWork;
+﻿using Fiap.Leilao.Web.Models;
+using Fiap.Leilao.Web.UnitsOfWork;
 using Fiap.Leilao.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,41 @@ namespace Fiap.Leilao.Web.Controllers
     {
         private UnitOfWork _unit = new UnitOfWork();
         // GET: Comprar
+        [HttpGet]
         public ActionResult Dashboard()
         {
 
-            var compras = new CompraViewModel()
+            CompraViewModel compras = PopulaLista();
+            return View(compras);
+        }
+        [HttpPost]
+        public ActionResult Dashboard(CompraViewModel compraViewModel, int idNegociacao)
+        {
+            var comprar = _unit.NegociacaoRepository.BuscarPorId(idNegociacao);
+            comprar.Status = "Aguardando Resposta";
+            comprar.Id_Comprador = 1;
+            comprar.Valor_Produto = compraViewModel.Valor_Produto;
+            _unit.NegociacaoRepository.Alterar(comprar);
+            _unit.Salvar();
+            CompraViewModel compras = PopulaLista();
+            return View(compras);
+        }
+
+        private CompraViewModel PopulaLista()
+        {
+            return new CompraViewModel()
             {
                 Negociacoes = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == null)
 
             };
-            return View(compras);
-
+        }
+        public ActionResult Buscar(string nomeBusca)
+        {
+            var viewModel = new CompraViewModel()
+            {
+                Negociacoes = _unit.NegociacaoRepository.BuscarPor(n=> n.Produto.Nome == nomeBusca)
+            };
+            return PartialView("_tabela", viewModel);
         }
     }
 }
