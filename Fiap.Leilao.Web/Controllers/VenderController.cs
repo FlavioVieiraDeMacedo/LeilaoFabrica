@@ -31,17 +31,20 @@ namespace Fiap.Leilao.Web.Controllers
         #region POSTs
 
         [HttpPost]
-        public ActionResult Vender(int id, VendaViewModel vViewModel)
-        {
-            //buscar produto pelo id            
-            var produto = _unit.ProdutoRepository.BuscarPorId(id);
+        public ActionResult Vender(VendaViewModel vViewModel)
+        {            
             //popular tabela negociacao
             if (ModelState.IsValid)
             {
                 var negociacao = new Negociacao()
                 {
-
+                    Id_Vendedor = vViewModel.VendedorId,
+                    Id_Produto = vViewModel.ProdutoId,
+                    Valor_Produto = vViewModel.ValorProduto,
+                    Valor_Vendedor = vViewModel.ValorVendedor,
+                    Status = vViewModel.Status
                 };
+                               
 
                 return View();
             }else
