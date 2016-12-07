@@ -17,13 +17,26 @@ if (mensagem != null)
 
 @*
     Helper para display de mensagem na página
-    com formatação usando Bootstrap
-    author Júlio
+com formatação usando Bootstrap
+author Júlio
 *@
 @helper Mensagem(string mensagem, string tipoMensagem) { 
     <div class="row">
         <div class="@tipoMensagem">
             <p>@mensagem</p>
+        </div>
+    </div>    
+}
+
+@*
+    Helper para display de título na página
+com formatação usando Bootstrap(page-header)
+author Júlio
+*@
+@helper Titulo(string titulo) { 
+    <div class="row">
+        <div class="page-header">
+            <h2>@titulo</h2>
         </div>
     </div>    
 }
