@@ -19,18 +19,7 @@ namespace Fiap.Leilao.Web.UnitsOfWork
 
         #region GETS       
 
-        public IGenericRepository<Negociacao> NegociacaoRepository
-        {
-            get
-            {
-                if(_negociacaoRepository == null)
-                {
-                    _negociacaoRepository = new GenericRepository<Negociacao>(_context);
-                }
-                return _negociacaoRepository;
-            }
-            set { _negociacaoRepository = value; }
-        }
+        
 
 
         public IGenericRepository<Produto> ProdutoRepository

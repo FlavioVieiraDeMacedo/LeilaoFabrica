@@ -24,6 +24,7 @@ namespace Fiap.Leilao.Web.Controllers
         public ActionResult Dashboard(CompraViewModel compraViewModel, int idNegociacao)
         {
             var comprar = _unit.NegociacaoRepository.BuscarPorId(idNegociacao);
+            
             comprar.Status = "Aguardando Resposta";
             comprar.Id_Comprador = 1;
             comprar.Valor_Produto = compraViewModel.Valor_Produto;
