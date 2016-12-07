@@ -8,6 +8,10 @@
 @MeuHelper.Mensagem(@Model.Mensagem, @Model.TipoMensagem)
 
 <div class="row">
+    @Html.ValidationSummary()
+</div>
+
+<div class="row">
     @using (Html.BeginForm())
     {
         //informacoes pessoais
@@ -81,6 +85,53 @@
         </div>
     }
 </div>
+
+@section scripts{
+    <script>
+        $().ready(function () {
+
+            //exemplo de validação
+            $("#Email").blur(function () {
+                var email = $(this).val();
+                if (validarInputEmail(email)) {
+                    validarEmail(email);
+                }                    
+            });
+
+            //função para validar o e-mail
+            //passar como parâmetro o valor do input do e-mail
+            function validarEmail(emailInput) {
+                $.ajax({
+                    url: '@Url.Action("VerificarEmail", "Usuario")',
+                    method: "get",
+                    data: { email: emailInput },
+                    success: function (data) {
+                        if (data.ok) {
+                            console.log("email já existe");
+                            return false;
+                        } else {
+                            console.log("email não existe");
+                            return true;
+                        }
+                    },
+                    erro: function () {
+                        console.log("erro na requisição");
+                        return false;
+                    }
+                });
+            }
+
+            //função para validar o valor do input do e-mail
+            //chamar antes de enviar a requisição ajax
+            function validarInputEmail(emailInput) {
+                var pattern = new RegExp(/^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/);
+                return pattern.test(emailInput);
+            }
+
+        });
+    </script>    
+    
+}
 
 @*author Julio*@
 
