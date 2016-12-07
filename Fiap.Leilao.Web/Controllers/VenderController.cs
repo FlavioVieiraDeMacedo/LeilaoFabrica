@@ -67,6 +67,7 @@ namespace Fiap.Leilao.Web.Controllers
                 catch (Exception e)
                 {
                     Debug.WriteLine("Erro " + e.Message);
+                    vViewModel.Produtos = ListarProdutos();
                     return View(vViewModel);
                 }
                 vViewModel.Produtos = ListarProdutos();
@@ -74,6 +75,7 @@ namespace Fiap.Leilao.Web.Controllers
             }
             else
             {
+                vViewModel.Produtos = ListarProdutos();
                 return View(vViewModel);
             }
             

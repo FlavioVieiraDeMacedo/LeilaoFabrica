@@ -40,7 +40,7 @@
                 {
                     <input type="hidden" id="ProdutoId" name="ProdutoId" /> 
                     <input type="hidden" id="Status" name="Status" value="Em Aberto" />
-                    <input type="hidden" id="VendedorId" name="VendedorId" value="1" /> //este campo deve ser o id do usuário logado  
+                    <input type="hidden" id="VendedorId" name="VendedorId" value="0" /> //este campo deve ser o id do usuário logado  
                     <div class="form-group">
                         @Html.LabelFor(v=>v.ValorVendedor)
                         @Html.TextBoxFor(v=>v.ValorVendedor, new { @class = "form-control" })
