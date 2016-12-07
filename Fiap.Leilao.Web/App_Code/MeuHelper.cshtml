@@ -13,3 +13,17 @@ if (mensagem != null)
         </div>
 }
 }
+
+
+@*
+    Helper para display de mensagem na página
+    com formatação usando Bootstrap
+    author Júlio
+*@
+@helper Mensagem(string mensagem, string tipoMensagem) { 
+    <div class="row">
+        <div class="@tipoMensagem">
+            <p>@mensagem</p>
+        </div>
+    </div>    
+}
