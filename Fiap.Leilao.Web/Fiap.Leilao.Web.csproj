@@ -237,6 +237,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="UnitsOfWork\UnitOfWork.cs" />
+    <Compile Include="ViewModels\DashGenericoViewModel.cs" />
     <Compile Include="ViewModels\ProdutoViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
     <Compile Include="ViewModels\VendaViewModel.cs" />
