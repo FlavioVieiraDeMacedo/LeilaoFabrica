@@ -35,7 +35,12 @@ namespace Fiap.Leilao.Web.Controllers
 
         [HttpPost]
         public ActionResult Vender(VendaViewModel vViewModel)
-        {            
+        {
+            var produto = _unit.ProdutoRepository.BuscarPorId(vViewModel.ProdutoId);
+            //tem problemas nessa parte
+            //aparentemente o banco mesmo como nullable n aceita sem
+            var usuario = _unit.UsuarioRepository.BuscarPorId(vViewModel.VendedorId);
+            var usuario1 = _unit.UsuarioRepository.BuscarPorId(vViewModel.VendedorId);
             //popular tabela negociacao
             if (ModelState.IsValid)
             {
@@ -45,19 +50,26 @@ namespace Fiap.Leilao.Web.Controllers
                     Id_Produto = vViewModel.ProdutoId,
                     Valor_Produto = vViewModel.ValorProduto,
                     Valor_Vendedor = vViewModel.ValorVendedor,
-                    Status = vViewModel.Status
+                    Status = vViewModel.Status,
+                    Produto = produto,
+                    //tem problemas nessa parte
+                    //aparentemente o banco mesmo como nullable n aceita sem
+                    Usuario = usuario,
+                    Usuario1 = usuario1
                 };
+
                 _unit.NegociacaoRepository.Cadastrar(negociacao);
 
                 try
                 {
-                    _unit.Salvar();
+                    _unit.Salvar();                    
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Erro {0}", e.Message);
+                    Debug.WriteLine("Erro " + e.Message);
                     return View(vViewModel);
                 }
+                vViewModel.Produtos = ListarProdutos();
                 return RedirectToAction("Vender", new { mensagem = "Produto adicionado a lista de vendas!", tipoMensagem = "alert alert-success" }); 
             }
             else

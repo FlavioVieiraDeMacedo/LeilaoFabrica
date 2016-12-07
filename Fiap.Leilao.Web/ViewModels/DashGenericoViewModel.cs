@@ -9,7 +9,7 @@ namespace Fiap.Leilao.Web.ViewModels
     public class DashGenericoViewModel
     {
         #region LISTs
-        public ICollection<Produto> ProdutosEmVenda { get; set; }
+        public ICollection<Negociacao> ProdutosEmVenda { get; set; }
         #endregion
     }
 }

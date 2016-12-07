@@ -30,9 +30,13 @@ namespace Fiap.Leilao.Web.Controllers
 
         //dashboard generico
         [HttpGet]
-        public ActionResult Painel()
+        public ActionResult Painel(DashGenericoViewModel dGviewModel)
         {
-            return View();
+            var viewModel = new DashGenericoViewModel()
+            {
+                ProdutosEmVenda = ListarProdutosEmVenda()
+            };
+            return View(viewModel);
         }
 
         /// <summary>
@@ -88,6 +92,13 @@ namespace Fiap.Leilao.Web.Controllers
                 return View(uViewModel);
             }
             
+        }
+        #endregion
+
+        #region PRIVATEs
+        private ICollection<Negociacao> ListarProdutosEmVenda()
+        {
+            return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Vendedor == 1);
         }
         #endregion
     }
