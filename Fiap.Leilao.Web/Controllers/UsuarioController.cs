@@ -28,6 +28,13 @@ namespace Fiap.Leilao.Web.Controllers
             return View(viewModel);
         }
 
+        //dashboard generico
+        [HttpGet]
+        public ActionResult Painel()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Função para verificar existência de cadastro com o e-mail informado
         /// utilizando ajax

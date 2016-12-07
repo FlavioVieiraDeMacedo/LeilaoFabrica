@@ -265,6 +265,7 @@
     <Content Include="Views\Usuario\Cadastrar.cshtml" />
     <Content Include="Views\Vender\Vender.cshtml" />
     <Content Include="Views\Vender\_tabela.cshtml" />
+    <Content Include="Views\Usuario\Painel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

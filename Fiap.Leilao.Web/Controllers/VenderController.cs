@@ -1,4 +1,5 @@
 ﻿using Fiap.Leilao.Web.UnitsOfWork;
+using Fiap.Leilao.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Fiap.Leilao.Web.Controllers
         #region POSTs
 
         [HttpPost]
-        public ActionResult Vender()
+        public ActionResult Vender(VendaViewModel vViewModel)
         {
             return View();
         }
