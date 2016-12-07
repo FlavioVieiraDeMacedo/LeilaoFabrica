@@ -1,7 +1,85 @@
-﻿
+﻿@model Fiap.Leilao.Web.ViewModels.UsuarioViewModel
 @{
     ViewBag.Title = "Cadastrar";
 }
 
-<h2>Cadastrar</h2>
+@MeuHelper.Titulo("Cadastro de Usuário")
+
+@MeuHelper.Mensagem(Model.Mensagem, Model.TipoMensagem)
+
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        //informacoes pessoais
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Informações Pessoais</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Nome)
+                        @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Cpf)
+                        @Html.TextBoxFor(u => u.Cpf, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.DataNascimento)
+                        @Html.TextBoxFor(u => u.DataNascimento, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Telefone)
+                        @Html.TextBoxFor(u => u.Telefone, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        //informacoes de endereço
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Endereço</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Cep)
+                        @Html.TextBoxFor(u => u.Cep, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Numero)
+                        @Html.TextBoxFor(u => u.Numero, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Complemento)
+                        @Html.TextBoxFor(u => u.Complemento, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @*Adicionar campos para logradouro, cidade, estado*@
+                    </div>
+                </div>                
+            </div>
+        </div>
+        //informacoes do usuario
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Informações de Usuário</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Email)
+                        @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(u => u.Senha)
+                        @Html.TextBoxFor(u => u.Senha, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="form-group">
+                        <button class="btn btn-success" id="btnEnviar">Enviar</button>
+                        <input type="reset" class="btn btn-danger" value="Limpar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
 
