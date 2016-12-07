@@ -18,10 +18,12 @@ namespace Fiap.Leilao.Web.Controllers
 
         #region GETs
         [HttpGet]
-        public ActionResult Vender(string mensage, string tipoMensagem)
+        public ActionResult Vender(string mensagem, string tipoMensagem)
         {
             var viewModel = new VendaViewModel()
             {
+                Mensagem = mensagem,
+                TipoMensagem = tipoMensagem,
                 Produtos = ListarProdutos()
             };
             return View(viewModel);

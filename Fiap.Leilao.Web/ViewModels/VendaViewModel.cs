@@ -9,6 +9,9 @@ namespace Fiap.Leilao.Web.ViewModels
     public class VendaViewModel
     {
 
+        public string Mensagem { get; set; }
+        public string TipoMensagem { get; set; }
+
         #region FEILDs
         public int VendedorId { get; set; }
         public int ProdutoId { get; set; }
