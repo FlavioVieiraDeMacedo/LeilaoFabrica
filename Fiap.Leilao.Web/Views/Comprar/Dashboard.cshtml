@@ -1,0 +1,42 @@
+﻿@model Fiap.Leilao.Web.ViewModels.CompraViewModel
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+@foreach (var item in Model.Negociacoes)
+{
+    <div class="col-lg-3">
+        <p>Produto: @item.Produto.Nome</p>
+        <p>Descrição: @item.Produto.Descricao</p>
+        <img src="@item.Produto.Imagem" />
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalComprar">
+            Ofertar
+        </button>
+    </div>
+}
+
+<div class="modal fade" id="ModalComprar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Cadastrar Produto</h4>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm("Cadastrar", "Venda", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                <div class="form-group">
+                    @Html.TextBoxFor(p => p.Valor_Produto, new { @class = "form-control", placeholder = "Oferta" })
+                    <p>O valor do vendedor é: @Model.Valor_Vendedor</p>
+                </div>
+                    
+                    @MeuHelper.Submit("Enviar Oferta", "btn btn-primary")
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            }
+        </div>
+    </div>
+</div>
+</div>

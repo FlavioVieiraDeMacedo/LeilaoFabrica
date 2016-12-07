@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Negociacao]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Id_Vendedor] INT NULL, 
     [Id_Comprador] INT NULL, 
     [Id_Produto] INT NULL, 
