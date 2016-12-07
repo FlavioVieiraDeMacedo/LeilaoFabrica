@@ -28,6 +28,19 @@ namespace Fiap.Leilao.Web.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Função para verificar existência de cadastro com o e-mail informado
+        /// utilizando ajax
+        /// </summary>
+        /// <param name="email">E-mail informado no input do cadastro de usuário</param>
+        /// <returns>Se existe registro de um usuário com o e-mail</returns>
+        [HttpGet]
+        public ActionResult VerificarEmail(string email)
+        {
+            var usuario = _unit.UsuarioRepository.BuscarPor(u=>u.Email == email);
+            return Json(new { ok = usuario.Any() }, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
 
         #region POSTs
