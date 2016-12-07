@@ -18,11 +18,11 @@ namespace Fiap.Leilao.Web.Controllers
 
         #region GETS
         [HttpGet]
-        public ActionResult Cadastrar(string mensage, string tipoMensagem)
+        public ActionResult Cadastrar(string mensagem, string tipoMensagem)
         {
             var viewModel = new UsuarioViewModel()
             {
-                Mensagem = mensage,
+                Mensagem = mensagem,
                 TipoMensagem = tipoMensagem
             };
             return View(viewModel);
@@ -72,3 +72,5 @@ namespace Fiap.Leilao.Web.Controllers
         #endregion
     }
 }
+
+//author Júlio
