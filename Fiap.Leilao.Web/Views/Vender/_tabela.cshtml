@@ -6,7 +6,8 @@
         <td>@item.Nome</td>
         <td>@item.Descricao</td>
         <td>
-            <button class="btn btn-success" id="btnVender">Vender</button>
+            <button onclick="produtoId.value=@item.Id" type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                    data-target="#modalVender">Vender</button>
         </td>
     </tr>
 }
