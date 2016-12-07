@@ -3,6 +3,7 @@ using Fiap.Leilao.Web.UnitsOfWork;
 using Fiap.Leilao.Web.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,7 @@ namespace Fiap.Leilao.Web.Controllers
 
         #region GETs
         [HttpGet]
-        public ActionResult Vender()
+        public ActionResult Vender(string mensage, string tipoMensagem)
         {
             var viewModel = new VendaViewModel()
             {
@@ -44,12 +45,22 @@ namespace Fiap.Leilao.Web.Controllers
                     Valor_Vendedor = vViewModel.ValorVendedor,
                     Status = vViewModel.Status
                 };
-                               
+                _unit.NegociacaoRepository.Cadastrar(negociacao);
 
-                return View();
-            }else
+                try
+                {
+                    _unit.Salvar();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Erro {0}", e.Message);
+                    return View(vViewModel);
+                }
+                return RedirectToAction("Vender", new { mensagem = "Produto adicionado a lista de vendas!", tipoMensagem = "alert alert-success" }); 
+            }
+            else
             {
-                return View();
+                return View(vViewModel);
             }
             
         }
