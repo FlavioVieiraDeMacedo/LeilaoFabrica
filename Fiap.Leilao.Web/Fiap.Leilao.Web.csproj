@@ -238,11 +238,8 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="UnitsOfWork\UnitOfWork.cs" />
-
     <Compile Include="ViewModels\CompraViewModel.cs" />
-
     <Compile Include="ViewModels\DashGenericoViewModel.cs" />
-
     <Compile Include="ViewModels\ProdutoViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
     <Compile Include="ViewModels\VendaViewModel.cs" />
@@ -272,12 +269,10 @@
     <Content Include="Views\Vender\Vender.cshtml" />
     <Content Include="Views\Vender\_tabela.cshtml" />
     <Content Include="Views\Usuario\Painel.cshtml" />
-
     <Content Include="Views\Comprar\Dashboard.cshtml" />
     <Content Include="Views\Comprar\_tabela.cshtml" />
-
     <Content Include="Views\Usuario\_tabelaVendas.cshtml" />
-
+    <Content Include="Views\Usuario\_tabelaCompras.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

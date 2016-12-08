@@ -34,7 +34,8 @@ namespace Fiap.Leilao.Web.Controllers
         {
             var viewModel = new DashGenericoViewModel()
             {
-                ProdutosEmVenda = ListarProdutosEmVenda()
+                ProdutosEmVenda = ListarProdutosEmVenda(),
+                ProdutosEmCompra = ListarProdutosEmCompra()
             };
             return View(viewModel);
         }
@@ -93,12 +94,46 @@ namespace Fiap.Leilao.Web.Controllers
             }
             
         }
+        [HttpPost]
+        public ActionResult RecusaProposta(int negociacaoId)
+        {
+            var negociacao = _unit.NegociacaoRepository.BuscarPorId(negociacaoId);
+            negociacao.Id_Comprador = null;
+            negociacao.Valor_Produto = null;
+            negociacao.Status = "Em Aberto";
+            _unit.NegociacaoRepository.Alterar(negociacao);
+            _unit.Salvar();
+            var viewModel = new DashGenericoViewModel()
+            {
+                ProdutosEmVenda = ListarProdutosEmVenda(),
+                ProdutosEmCompra = ListarProdutosEmCompra()
+            };
+            return View("Painel", viewModel);
+        }
+        [HttpPost]
+        public ActionResult AceitaProposta(int negociacao2Id)
+        {
+            var negociacao = _unit.NegociacaoRepository.BuscarPorId(negociacao2Id);
+            negociacao.Status = "Vendido";
+            _unit.NegociacaoRepository.Alterar(negociacao);
+            _unit.Salvar();
+            var viewModel = new DashGenericoViewModel()
+            {
+                ProdutosEmVenda = ListarProdutosEmVenda(),
+                ProdutosEmCompra = ListarProdutosEmCompra()
+            };
+            return View("Painel", viewModel);
+        }
         #endregion
 
         #region PRIVATEs
         private ICollection<Negociacao> ListarProdutosEmVenda()
         {
             return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Vendedor == 1);
+        }
+        private ICollection<Negociacao> ListarProdutosEmCompra()
+        {
+            return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 1);
         }
         #endregion
     }

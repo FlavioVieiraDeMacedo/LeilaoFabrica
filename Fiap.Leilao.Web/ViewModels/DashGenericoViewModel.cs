@@ -10,6 +10,7 @@ namespace Fiap.Leilao.Web.ViewModels
     {
         #region LISTs
         public ICollection<Negociacao> ProdutosEmVenda { get; set; }
+        public ICollection<Negociacao> ProdutosEmCompra { get; set; }
         #endregion
     }
 }
