@@ -1,10 +1,13 @@
 ﻿@model Fiap.Leilao.Web.ViewModels.CompraViewModel
 @foreach (var item in Model.Negociacoes)
 {
-    <div class="col-lg-3">
-        <p>Produto: @item.Produto.Nome</p>
-        <p>Descrição: @item.Produto.Descricao</p>
-        <p>Status: @item.Status</p>
+    <div class="col-md-3">
+        <td>
+            <img src=@item.Produto.Imagem class="img-thumbnail" alt=@item.Produto.Imagem width="100" height="50">
+        </td>
+        <p>@item.Produto.Nome</p>
+        <p>R$ @item.Valor_Vendedor</p>
+        
 
         <button type="button" onclick="idNegociacao.value = @item.Id" class="btn btn-success" data-toggle="modal" data-target="#ModalComprar">
             Ofertar
