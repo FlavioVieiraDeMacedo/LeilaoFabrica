@@ -7,25 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fiap.Leilao.Web.Models
+namespace Fiap.Leilao.Dominio.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Produto
+    public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Produto()
+        public Usuario()
         {
             this.Negociacaos = new HashSet<Negociacao>();
+            this.Negociacaos1 = new HashSet<Negociacao>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public string Imagem { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
+        public string CPF { get; set; }
+        public string CEP { get; set; }
+        public int Numero { get; set; }
+        public string Complemento { get; set; }
+        public System.DateTime Dt_Nascimento { get; set; }
+        public string Telefone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Negociacao> Negociacaos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Negociacao> Negociacaos1 { get; set; }
     }
 }

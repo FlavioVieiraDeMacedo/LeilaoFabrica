@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fiap.Leilao.Web.Models
+namespace Fiap.Leilao.Dominio.Models
 {
     using System;
     using System.Data.Entity;

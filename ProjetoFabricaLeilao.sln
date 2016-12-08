@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Fiap.Leilao.Banco", "Fiap.Leilao.Banco\Fiap.Leilao.Banco.sqlproj", "{1F24054D-BB36-4960-BC19-94C6ED2C2BCC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.Leilao.Web", "Fiap.Leilao.Web\Fiap.Leilao.Web.csproj", "{9E77BDBE-81C8-427C-85F7-B9148DA4C1AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.Leilao.Dominio", "Fiap.Leilao.Dominio\Fiap.Leilao.Dominio.csproj", "{1B964026-35AF-4FD7-94DB-61D43E08E936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.Leilao.Persistencia", "Fiap.Leilao.Persistencia\Fiap.Leilao.Persistencia.csproj", "{8A5A8C83-503F-4848-A92F-343902D2D053}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{9E77BDBE-81C8-427C-85F7-B9148DA4C1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E77BDBE-81C8-427C-85F7-B9148DA4C1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E77BDBE-81C8-427C-85F7-B9148DA4C1AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B964026-35AF-4FD7-94DB-61D43E08E936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B964026-35AF-4FD7-94DB-61D43E08E936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B964026-35AF-4FD7-94DB-61D43E08E936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B964026-35AF-4FD7-94DB-61D43E08E936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A5A8C83-503F-4848-A92F-343902D2D053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A5A8C83-503F-4848-A92F-343902D2D053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A5A8C83-503F-4848-A92F-343902D2D053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A5A8C83-503F-4848-A92F-343902D2D053}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

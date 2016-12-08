@@ -1,5 +1,6 @@
-﻿using Fiap.Leilao.Web.Models;
-using Fiap.Leilao.Web.UnitsOfWork;
+﻿
+using Fiap.Leilao.Dominio.Models;
+using Fiap.Leilao.Persistencia.UnitsOfWork;
 using Fiap.Leilao.Web.ViewModels;
 using System;
 using System.Collections.Generic;

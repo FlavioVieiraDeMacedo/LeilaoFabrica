@@ -173,16 +173,6 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Banco.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Banco.edmx</DependentUpon>
-      <LastGenOutput>Banco.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Banco.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Banco.edmx</DependentUpon>
-      <LastGenOutput>Banco.cs</LastGenOutput>
-    </Content>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -210,34 +200,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Banco.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Banco.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Banco.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Banco.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Banco.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Banco.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Negociacao.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Produto.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\GenericRepository.cs" />
-    <Compile Include="Repositories\IGenericRepository.cs" />
-    <Compile Include="UnitsOfWork\UnitOfWork.cs" />
     <Compile Include="ViewModels\CompraViewModel.cs" />
     <Compile Include="ViewModels\DashGenericoViewModel.cs" />
     <Compile Include="ViewModels\ProdutoViewModel.cs" />
@@ -249,13 +212,6 @@
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\Banco.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Banco.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Banco.edmx.diagram">
-      <DependentUpon>Banco.edmx</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -285,6 +241,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fiap.Leilao.Dominio\Fiap.Leilao.Dominio.csproj">
+      <Project>{1b964026-35af-4fd7-94db-61d43e08e936}</Project>
+      <Name>Fiap.Leilao.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fiap.Leilao.Persistencia\Fiap.Leilao.Persistencia.csproj">
+      <Project>{8a5a8c83-503f-4848-a92f-343902d2d053}</Project>
+      <Name>Fiap.Leilao.Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

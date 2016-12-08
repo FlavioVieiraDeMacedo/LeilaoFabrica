@@ -1,4 +1,5 @@
-﻿using Fiap.Leilao.Web.Models;
+﻿
+using Fiap.Leilao.Dominio.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Fiap.Leilao.Web.Repositories
+namespace Fiap.Leilao.Persistencia.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

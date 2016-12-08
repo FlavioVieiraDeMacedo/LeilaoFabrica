@@ -1,4 +1,5 @@
-﻿using Fiap.Leilao.Web.Models;
+﻿
+using Fiap.Leilao.Dominio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

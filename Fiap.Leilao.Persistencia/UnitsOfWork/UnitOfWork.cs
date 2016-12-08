@@ -1,11 +1,13 @@
-﻿using Fiap.Leilao.Web.Models;
-using Fiap.Leilao.Web.Repositories;
+﻿
+
+using Fiap.Leilao.Dominio.Models;
+using Fiap.Leilao.Persistencia.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Fiap.Leilao.Web.UnitsOfWork
+namespace Fiap.Leilao.Persistencia.UnitsOfWork
 {
     public class UnitOfWork
     {
