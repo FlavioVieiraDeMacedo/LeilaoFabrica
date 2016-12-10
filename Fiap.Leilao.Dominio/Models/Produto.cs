@@ -24,8 +24,12 @@ namespace Fiap.Leilao.Dominio.Models
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Imagem { get; set; }
+        public Nullable<decimal> Valor_Vendedor { get; set; }
+        public Nullable<int> Id_Vendedor { get; set; }
+        public string Status_Produto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Negociacao> Negociacaos { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

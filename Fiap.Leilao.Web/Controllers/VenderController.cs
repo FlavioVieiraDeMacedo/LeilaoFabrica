@@ -47,9 +47,9 @@ namespace Fiap.Leilao.Web.Controllers
             {
                 var negociacao = new Negociacao()
                 {
-                    Id_Vendedor = vViewModel.VendedorId,                    
+                    //Id_Vendedor = vViewModel.VendedorId,                    
                     Id_Produto = vViewModel.ProdutoId,
-                    Valor_Vendedor = vViewModel.ValorVendedor,
+                    //Valor_Vendedor = vViewModel.ValorVendedor,
                     Status = vViewModel.Status
                 };
                 _unit.NegociacaoRepository.Cadastrar(negociacao);

@@ -24,7 +24,7 @@
                     @Html.TextBoxFor(p => p.Valor_Produto, new { @class = "form-control", placeholder = "Oferta" })
                     
                 </div>
-                    <input type="hidden" name="idNegociacao" id="idNegociacao" />
+                @Html.HiddenFor(p=>p.Id_Produto)
                     
                     @MeuHelper.Submit("Enviar Oferta", "btn btn-primary")
 

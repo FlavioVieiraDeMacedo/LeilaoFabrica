@@ -1,4 +1,4 @@
-﻿@model List<Fiap.Leilao.Dominio.Models.Negociacao>
+﻿@model ICollection<Fiap.Leilao.Dominio.Models.Negociacao>
 
 @foreach (var item in Model)
 {
@@ -9,7 +9,7 @@
         <td>
             <h4>@item.Produto.Nome</h4>
         </td>
-        <td>@item.Valor_Vendedor</td>
+        <td></td>
         <td>@item.Valor_Produto</td>
         <td>
             @if (item.Status == "Vendido")

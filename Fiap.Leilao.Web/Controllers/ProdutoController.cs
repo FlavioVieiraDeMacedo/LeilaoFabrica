@@ -41,11 +41,14 @@ namespace Fiap.Leilao.Web.Controllers
                Id=viewModel.Id,
                Nome=viewModel.Nome,
                Descricao=viewModel.Descricao,
-               Imagem=viewModel.Imagem
+               Imagem=viewModel.Imagem,
+               Id_Vendedor= 3,//Modificar na autenticacao
+               Valor_Vendedor=viewModel.Valor_Vendedor,
+               Status_Produto="Vendendo"
             };
             _unit.ProdutoRepository.Cadastrar(produto);
             _unit.Salvar();
-            return RedirectToAction("Index", new { msg = "Produto Cadastrado com sucesso!" });
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult Excluir(int produtoId)
@@ -62,7 +65,9 @@ namespace Fiap.Leilao.Web.Controllers
                 Id=viewModel.Id,
                 Nome = viewModel.Nome2,
                 Descricao = viewModel.Descricao2,
-                Imagem = viewModel.Imagem2
+                Imagem = viewModel.Imagem2,
+                Valor_Vendedor=viewModel.Valor_Vendedor2,
+                Id_Vendedor=viewModel.Id_Vendedor
             };
             _unit.ProdutoRepository.Alterar(Produto);
             _unit.Salvar();

@@ -17,6 +17,6 @@ namespace Fiap.Leilao.Web.ViewModels
         public Nullable<decimal> Valor_Produto { get; set; }
         public string Status { get; set; }
 
-        public ICollection<Negociacao> Negociacoes { get; set; }
+        public ICollection<Produto> Produtos { get; set; }
     }
 }

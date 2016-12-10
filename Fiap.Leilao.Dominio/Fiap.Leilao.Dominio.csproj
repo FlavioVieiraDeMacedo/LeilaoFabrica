@@ -52,19 +52,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Banco.Context.cs">
-      <DependentUpon>Banco.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Banco.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Banco.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Banco.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Banco.Designer.cs">
-      <DependentUpon>Banco.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Banco.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Negociacao.cs">
       <DependentUpon>Banco.tt</DependentUpon>
@@ -78,20 +78,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Banco.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Banco.edmx</DependentUpon>
-      <LastGenOutput>Banco.cs</LastGenOutput>
-    </Content>
     <None Include="App.config" />
     <EntityDeploy Include="Models\Banco.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Banco.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Banco.edmx.diagram">
+    <None Include="Models\Banco.edmx.diagram">
       <DependentUpon>Banco.edmx</DependentUpon>
-    </Content>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Banco.Context.tt">
@@ -99,9 +97,11 @@
       <DependentUpon>Banco.edmx</DependentUpon>
       <LastGenOutput>Banco.Context.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Models\Banco.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Banco.edmx</DependentUpon>
+      <LastGenOutput>Banco.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

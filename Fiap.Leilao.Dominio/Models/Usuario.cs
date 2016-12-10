@@ -18,7 +18,7 @@ namespace Fiap.Leilao.Dominio.Models
         public Usuario()
         {
             this.Negociacaos = new HashSet<Negociacao>();
-            this.Negociacaos1 = new HashSet<Negociacao>();
+            this.Produtoes = new HashSet<Produto>();
         }
     
         public int Id { get; set; }
@@ -35,6 +35,6 @@ namespace Fiap.Leilao.Dominio.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Negociacao> Negociacaos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Negociacao> Negociacaos1 { get; set; }
+        public virtual ICollection<Produto> Produtoes { get; set; }
     }
 }

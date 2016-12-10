@@ -33,8 +33,9 @@ namespace Fiap.Leilao.Web.Controllers
         {
             var viewModel = new DashGenericoViewModel()
             {
+                
                 ProdutosEmVenda = ListarProdutosEmVenda(),
-                ProdutosEmCompra = ListarProdutosEmCompra()
+                ProdutosEmCompra=ListarProdutosEmCompra()
             };
             return View(viewModel);
         }
@@ -128,14 +129,20 @@ namespace Fiap.Leilao.Web.Controllers
         #region PRIVATEs
         private ICollection<Negociacao> ListarProdutosEmVenda()
         {
-            return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Vendedor == 1);
+            var produto = _unit.ProdutoRepository.BuscarPor(a => a.Id_Vendedor == 1);
+           // List<Negociacao> negociacoes = null;
+            ///foreach (var item in produtos)
+            //{
+            //    negociacoes=_unit.NegociacaoRepository.BuscarPor(a=>a.Id_Produto == item.Id);
+            //}
+            return null;
         }
         private ICollection<Negociacao> ListarProdutosEmCompra()
         {
             return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 1);
+            
         }
         #endregion
     }
 }
 
-//author Júlio

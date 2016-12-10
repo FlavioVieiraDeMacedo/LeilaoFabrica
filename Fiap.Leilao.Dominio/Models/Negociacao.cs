@@ -15,15 +15,12 @@ namespace Fiap.Leilao.Dominio.Models
     public partial class Negociacao
     {
         public int Id { get; set; }
-        public Nullable<int> Id_Vendedor { get; set; }
         public Nullable<int> Id_Comprador { get; set; }
         public Nullable<int> Id_Produto { get; set; }
-        public Nullable<decimal> Valor_Vendedor { get; set; }
         public Nullable<decimal> Valor_Produto { get; set; }
         public string Status { get; set; }
     
         public virtual Usuario Usuario { get; set; }
         public virtual Produto Produto { get; set; }
-        public virtual Usuario Usuario1 { get; set; }
     }
 }

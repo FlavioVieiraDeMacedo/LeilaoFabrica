@@ -1,4 +1,5 @@
-﻿using Fiap.Leilao.Persistencia.UnitsOfWork;
+﻿using Fiap.Leilao.Dominio.Models;
+using Fiap.Leilao.Persistencia.UnitsOfWork;
 using Fiap.Leilao.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,14 +21,20 @@ namespace Fiap.Leilao.Web.Controllers
             return View(compras);
         }
         [HttpPost]
-        public ActionResult Dashboard(CompraViewModel compraViewModel, int idNegociacao)
+        public ActionResult Dashboard(CompraViewModel compraViewModel)
         {
-            var comprar = _unit.NegociacaoRepository.BuscarPorId(idNegociacao);
-            
-            comprar.Status = "Aguardando Resposta";
-            comprar.Id_Comprador = 1;
-            comprar.Valor_Produto = compraViewModel.Valor_Produto;
-            _unit.NegociacaoRepository.Alterar(comprar);
+
+            var negociacao = new Negociacao
+            {
+                Id_Produto = compraViewModel.Id_Produto,
+                Valor_Produto=compraViewModel.Valor_Produto,
+                Id_Comprador = 3, // alterar na autenticacao
+                Status = "Aguardando Resposta"
+            };
+            var produto = _unit.ProdutoRepository.BuscarPorId((int)compraViewModel.Id_Produto);
+            produto.Status_Produto = "Em negociação";
+            _unit.ProdutoRepository.Alterar(produto);
+            _unit.NegociacaoRepository.Cadastrar(negociacao);
             _unit.Salvar();
             CompraViewModel compras = PopulaLista();
             return View(compras);
@@ -37,7 +44,8 @@ namespace Fiap.Leilao.Web.Controllers
         {
             return new CompraViewModel()
             {
-                Negociacoes = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == null)
+                
+                Produtos = _unit.ProdutoRepository.BuscarPor(p=>p.Status_Produto=="Vendendo")
 
             };
         }
@@ -45,7 +53,7 @@ namespace Fiap.Leilao.Web.Controllers
         {
             var viewModel = new CompraViewModel()
             {
-                Negociacoes = _unit.NegociacaoRepository.BuscarPor(n=> n.Produto.Nome == nomeBusca)
+                Produtos = _unit.ProdutoRepository.BuscarPor(p=>p.Status_Produto == "Vendendo"&& p.Nome == nomeBusca)
             };
             return PartialView("_tabela", viewModel);
         }
