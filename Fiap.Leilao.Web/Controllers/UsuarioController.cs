@@ -95,12 +95,13 @@ namespace Fiap.Leilao.Web.Controllers
             
         }
         [HttpPost]
-        public ActionResult RecusaProposta(int negociacaoId)
+        public ActionResult RecusaProposta(int produtoId)
         {
-            var negociacao = _unit.NegociacaoRepository.BuscarPorId(negociacaoId);
-            negociacao.Id_Comprador = null;
-            negociacao.Valor_Produto = null;
-            negociacao.Status = "Em Aberto";
+            var produto = _unit.ProdutoRepository.BuscarPorId(produtoId);
+            var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.First().Id);
+            produto.Status_Produto = "Vendendo";
+            negociacao.Status = "Negado";
+            _unit.ProdutoRepository.Alterar(produto);
             _unit.NegociacaoRepository.Alterar(negociacao);
             _unit.Salvar();
             var viewModel = new DashGenericoViewModel()
@@ -111,10 +112,13 @@ namespace Fiap.Leilao.Web.Controllers
             return View("Painel", viewModel);
         }
         [HttpPost]
-        public ActionResult AceitaProposta(int negociacao2Id)
+        public ActionResult AceitaProposta(int produtoId2)
         {
-            var negociacao = _unit.NegociacaoRepository.BuscarPorId(negociacao2Id);
+            var produto = _unit.ProdutoRepository.BuscarPorId(produtoId2);
+            var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.First().Id);
+            produto.Status_Produto = "Vendido";
             negociacao.Status = "Vendido";
+            _unit.ProdutoRepository.Alterar(produto);
             _unit.NegociacaoRepository.Alterar(negociacao);
             _unit.Salvar();
             var viewModel = new DashGenericoViewModel()
@@ -127,19 +131,13 @@ namespace Fiap.Leilao.Web.Controllers
         #endregion
 
         #region PRIVATEs
-        private ICollection<Negociacao> ListarProdutosEmVenda()
+        private ICollection<Produto> ListarProdutosEmVenda()
         {
-            var produto = _unit.ProdutoRepository.BuscarPor(a => a.Id_Vendedor == 1);
-           // List<Negociacao> negociacoes = null;
-            ///foreach (var item in produtos)
-            //{
-            //    negociacoes=_unit.NegociacaoRepository.BuscarPor(a=>a.Id_Produto == item.Id);
-            //}
-            return null;
+            return _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3); 
         }
         private ICollection<Negociacao> ListarProdutosEmCompra()
         {
-            return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 1);
+            return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3);
             
         }
         #endregion

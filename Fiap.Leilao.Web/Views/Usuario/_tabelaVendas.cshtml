@@ -1,23 +1,23 @@
-﻿@model ICollection<Fiap.Leilao.Dominio.Models.Negociacao>
+﻿@model Fiap.Leilao.Web.ViewModels.DashGenericoViewModel
 
-@foreach (var item in Model)
+@foreach (var item in Model.ProdutosEmVenda)
 {
     <tr>
         <td>
-            <img src=@item.Produto.Imagem class="img-thumbnail" alt=@item.Produto.Imagem width="100" height="50">
+            <img src=@item.Imagem class="img-thumbnail" alt=@item.Imagem width="100" height="50">
         </td>
-        <td>@item.Produto.Nome</td>
-        <td>@item.Produto.Descricao</td>
+        <td>@item.Nome</td>
+        <td>@item.Valor_Vendedor</td>
         <td>
-        @if (item.Status == "Aguardando Resposta")
+        @if (item.Status_Produto == "Em negociação")
         { 
-            <button  onclick="proposta.innerHTML='A proposta foi de: R$ ',negociacaoId.value = @item.Id ,negociacao2Id.value = @item.Id" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+            <button  onclick="proposta.innerHTML='A proposta foi de: R$ @item.Negociacaos.First().Valor_Produto',produtoId.value = @item.Id ,produtoId2.value = @item.Id" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
                 Ver Proposta
             </button>
         }
         else
         {
-            @item.Status
+            @item.Status_Produto
         }
         </td>
         

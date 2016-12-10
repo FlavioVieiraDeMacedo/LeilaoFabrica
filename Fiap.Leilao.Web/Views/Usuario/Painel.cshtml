@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12">
-        @Html.ActionLink("Vender Produtos", "Vender", "Vender", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Vender Produtos", "Index", "Produto", null, new { @class = "btn btn-primary" })
         @Html.ActionLink("Comprar Produtos", "Dashboard", "Comprar", null, new { @class = "btn btn-primary" })
 
     </div>
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody id="_tabelaVendas">
-                @Html.Partial("_tabelaVendas",Model.ProdutosEmCompra)
+                @Html.Partial("_tabelaVendas",Model)
             </tbody>
         </table>
     </div>
@@ -40,7 +40,6 @@
                 <tr>
                     <th></th>
                     <th>Produto</th>
-                    <th>Valor</th>
                     <th>Oferta</th>
                     <th>Status</th>
                 </tr>
@@ -71,14 +70,14 @@
                     <div class="col-md-3">
                         @using (Html.BeginForm("AceitaProposta", "Usuario"))
                         {
-                            <input type="hidden" id="negociacao2Id" name="negociacao2Id" />
+                            <input type="hidden" id="produtoId2" name="produtoId2" />
                             <button type="submit" class="btn btn-success" id="botaoVender">Aceitar</button>
                         }
                     </div>
                     <div class="col-md-3">
                         @using (Html.BeginForm("RecusaProposta", "Usuario"))
                         {
-                            <input type="hidden" id="negociacaoId" name="negociacaoId" />
+                            <input type="hidden" id="produtoId" name="produtoId" />
                             <button type="submit" class="btn btn-warning" id="botaoRecusar">Recusar</button>
                         }
                     </div>
