@@ -159,17 +159,17 @@ namespace Fiap.Leilao.Web.Controllers
         }
         private int ContaComprasNegados()
         {
-            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3 && n.Status == "Negado");
             return a.Count();
         }
         private int ContaComprasPendentes()
         {
-            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3 && n.Status == "Aguardando Resposta");
             return a.Count();
         }
         private int ContaComprados()
         {
-            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3 && n.Status == "Vendido");
             return a.Count();
         }
         #endregion

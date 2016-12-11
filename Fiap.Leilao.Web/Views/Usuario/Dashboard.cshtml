@@ -51,6 +51,9 @@
             </tbody>
         </table>
     </div>
+    <div class="col-md-6 col-sm-6">
+        <canvas id="grafico2" width="400" height="400"></canvas>
+    </div>
 </div>
 
 
@@ -135,7 +138,7 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Vendendo", "Vendido", "Propostas a Responder"],
+                labels: ["Finalizado", "Negado", "Aguardando Responder"],
                 datasets: [{
                     label: '# of Votes',
                     data: [@Model.Finalizado, @Model.Negado,@Model.AguardandoResposta],
