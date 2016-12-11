@@ -11,7 +11,7 @@
         <td>
         @if (item.Status_Produto == "Em negociação")
         { 
-            <button  onclick="proposta.innerHTML='A proposta foi de: R$ @item.Negociacaos.First().Valor_Produto',produtoId.value = @item.Id ,produtoId2.value = @item.Id" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+            <button  onclick="proposta.innerHTML='A proposta foi de: R$ @item.Negociacaos.Last().Valor_Produto',produtoId.value = @item.Id ,produtoId2.value = @item.Id" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
                 Ver Proposta
             </button>
         }

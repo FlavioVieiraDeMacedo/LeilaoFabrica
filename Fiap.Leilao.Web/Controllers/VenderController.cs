@@ -1,10 +1,8 @@
-﻿
-using Fiap.Leilao.Dominio.Models;
+﻿using Fiap.Leilao.Dominio.Models;
 using Fiap.Leilao.Persistencia.UnitsOfWork;
 using Fiap.Leilao.Web.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,75 +11,67 @@ namespace Fiap.Leilao.Web.Controllers
 {
     public class VenderController : Controller
     {
-        #region FIELDs
         private UnitOfWork _unit = new UnitOfWork();
-        #endregion
-
-        #region GETs
         [HttpGet]
-        public ActionResult Vender(string mensagem, string tipoMensagem)
+        public ActionResult DashBoard(string msg)
         {
-            var viewModel = new VendaViewModel()
+            var viewModel = new ProdutoViewModel()
             {
-                Mensagem = mensagem,
-                TipoMensagem = tipoMensagem,
-                Produtos = ListarProdutos()
+                Mensagem = msg,
+                Produtos = _unit.ProdutoRepository.Listar()
             };
             return View(viewModel);
         }
+        [HttpGet]
+        public ActionResult Buscar(string nomeBusca)
+        {
+            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca));
+            var viewModel = new ProdutoViewModel()
+            {
+                Produtos = lista
+            };
+            return PartialView("_tabela", viewModel);
 
-        #endregion
-
-        #region POSTs
-
+        }
         [HttpPost]
-        public ActionResult Vender(VendaViewModel vViewModel)
+        public ActionResult Cadastrar(ProdutoViewModel viewModel)
         {
-            var produto = _unit.ProdutoRepository.BuscarPorId(vViewModel.ProdutoId);
-            //tem problemas nessa parte
-            //aparentemente o banco mesmo como nullable n aceita sem
-            var usuario = _unit.UsuarioRepository.BuscarPorId(vViewModel.VendedorId);
-            var usuario1 = _unit.UsuarioRepository.BuscarPorId(vViewModel.VendedorId);
-            //popular tabela negociacao
-            if (ModelState.IsValid)
+            Produto produto = new Produto()
             {
-                var negociacao = new Negociacao()
-                {
-                    //Id_Vendedor = vViewModel.VendedorId,                    
-                    Id_Produto = vViewModel.ProdutoId,
-                    //Valor_Vendedor = vViewModel.ValorVendedor,
-                    Status = vViewModel.Status
-                };
-                _unit.NegociacaoRepository.Cadastrar(negociacao);
-
-                try
-                {
-                    _unit.Salvar();                    
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine("Erro no Post do Vender" + e.Message);
-                    vViewModel.Produtos = ListarProdutos();
-                    return View(vViewModel);
-                }
-                vViewModel.Produtos = ListarProdutos();
-                return RedirectToAction("Vender", new { mensagem = "Produto adicionado a lista de vendas!", tipoMensagem = "alert alert-success" }); 
-            }
-            else
-            {
-                vViewModel.Produtos = ListarProdutos();
-                return View(vViewModel);
-            }
-            
+               Id=viewModel.Id,
+               Nome=viewModel.Nome,
+               Descricao=viewModel.Descricao,
+               Imagem=viewModel.Imagem,
+               Id_Vendedor= 3,//Modificar na autenticacao
+               Valor_Vendedor=viewModel.Valor_Vendedor,
+               Status_Produto="Vendendo"
+            };
+            _unit.ProdutoRepository.Cadastrar(produto);
+            _unit.Salvar();
+            return RedirectToAction("DashBoard");
         }
-
-        #endregion
-
-        #region PRIVATE
-        public ICollection<Produto> ListarProdutos()
+        [HttpPost]
+        public ActionResult Excluir(int produtoId)
         {
-            return _unit.ProdutoRepository.Listar();
+            _unit.ProdutoRepository.Remover(produtoId);
+            _unit.Salvar();
+            return RedirectToAction("DashBoard", new { msg = "Produto Deletado com sucesso!" });
         }
-        #endregion
+        [HttpPost]
+        public ActionResult Editar(ProdutoViewModel viewModel)
+        {
+            Produto Produto = new Produto()
+            {
+                Id=viewModel.Id,
+                Nome = viewModel.Nome2,
+                Descricao = viewModel.Descricao2,
+                Imagem = viewModel.Imagem2,
+                Valor_Vendedor=viewModel.Valor_Vendedor2,
+                Id_Vendedor=viewModel.Id_Vendedor
+            };
+            _unit.ProdutoRepository.Alterar(Produto);
+            _unit.Salvar();
+            return RedirectToAction("DashBoard", new { msg = "Produto Alterado com sucesso!" });
+        }
     }
 }

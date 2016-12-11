@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Produtos";
 }
+@MeuHelper.Titulo("Vender Produtos")
 
-<h2>Index</h2>
 
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalCadastrar">
     Cadastrar Produtos
@@ -51,7 +51,7 @@
                 Realmente dezeja apagar o aluno?
             </div>
             <div class="modal-footer">
-                @using (Html.BeginForm("Excluir", "Produto"))
+                @using (Html.BeginForm("Excluir", "Vender"))
                 {
                     <input type="hidden" id="produtoId" name="produtoId" />
                     <button type="submit" class="btn btn-primary">Sim</button>
@@ -75,7 +75,7 @@
                 <h4 class="modal-title" id="myModalLabel">Editar Produto</h4>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("Editar", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
+                @using (Html.BeginForm("Editar", "Vender", FormMethod.Post, new { @class = "form-horizontal" }))
                 {
                     <div class="form-group">
                         @Html.TextBoxFor(p => p.Nome2, new { @class = "form-control", placeholder = "Nome" })
@@ -110,7 +110,7 @@
                 <h4 class="modal-title" id="myModalLabel">Cadastrar Produto</h4>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("Cadastrar", "Produto", FormMethod.Post, new { @class = "form-inline" }))
+                @using (Html.BeginForm("Cadastrar", "Vender", FormMethod.Post, new { @class = "form-inline" }))
                 {
                     <div class="form-group">
                         @Html.TextBoxFor(p => p.Nome, new { @class = "form-control", placeholder = "Nome" })
@@ -149,8 +149,6 @@
         }
         $().ready(function () {
             someBotao();
-
-
             $("#nomeBusca").change(function () {
                 $("#formularioBusca").submit();
             });

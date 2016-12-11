@@ -49,13 +49,17 @@ namespace Fiap.Leilao.Web.Controllers
 
             };
         }
+        
+        [HttpGet]
         public ActionResult Buscar(string nomeBusca)
         {
+            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca) && a.Status_Produto == "Vendendo");
             var viewModel = new CompraViewModel()
             {
-                Produtos = _unit.ProdutoRepository.BuscarPor(p=>p.Status_Produto == "Vendendo"&& p.Nome == nomeBusca)
+                Produtos = lista
             };
             return PartialView("_tabela", viewModel);
+
         }
     }
 }

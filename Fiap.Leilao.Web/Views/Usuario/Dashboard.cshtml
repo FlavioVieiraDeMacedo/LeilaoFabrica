@@ -1,0 +1,166 @@
+﻿@model Fiap.Leilao.Web.ViewModels.DashGenericoViewModel
+@{
+    ViewBag.Title = "Painel";
+}
+
+@MeuHelper.Titulo("Painel do Usuário")
+
+
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        @MeuHelper.SubTitulo("Produtos em Venda")
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="_tabelaVendas">
+                @Html.Partial("_tabelaVendas", Model)
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6 col-sm-6">
+        <canvas id="grafico1" width="400" height="400"></canvas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        @MeuHelper.SubTitulo("Produtos em Compra")
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Produto</th>
+                    <th>Oferta</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="_tabelaCompras">
+
+                @Html.Partial("_tabelaCompras", Model.ProdutosEmCompra)
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModalConcluiVenda">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+            </div>
+            <div class="modal-body" id="proposta">
+
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-3">
+                        @using (Html.BeginForm("AceitaProposta", "Usuario"))
+                        {
+                            <input type="hidden" id="produtoId2" name="produtoId2" />
+                            <button type="submit" class="btn btn-success" id="botaoVender">Aceitar</button>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        @using (Html.BeginForm("RecusaProposta", "Usuario"))
+                        {
+                            <input type="hidden" id="produtoId" name="produtoId" />
+                            <button type="submit" class="btn btn-warning" id="botaoRecusar">Recusar</button>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script>
+        //Grafico 1
+        var ctx = document.getElementById("grafico1");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Vendendo", "Vendido", "Propostas a Responder"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [@Model.Vendendo, @Model.Vendido,@Model.ResponderProposta],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        //Grafico 2
+        var ctx = document.getElementById("grafico2");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Vendendo", "Vendido", "Propostas a Responder"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [@Model.Finalizado, @Model.Negado,@Model.AguardandoResposta],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+}

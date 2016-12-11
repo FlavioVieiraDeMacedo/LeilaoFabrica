@@ -11,6 +11,12 @@ namespace Fiap.Leilao.Web.ViewModels
         #region LISTs
         public ICollection<Produto> ProdutosEmVenda { get; set; }
         public ICollection<Negociacao> ProdutosEmCompra { get; set; }
+        public int Vendido { get; set; }
+        public int Vendendo { get; set; }
+        public int ResponderProposta { get; set; }
+        public int Negado { get; set; }
+        public int Finalizado { get; set; }
+        public int AguardandoResposta { get; set; }
         #endregion
     }
 }

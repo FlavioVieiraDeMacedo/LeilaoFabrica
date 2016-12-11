@@ -7,9 +7,7 @@
         </td>
         <p>@item.Nome</p>
         <p>R$ @item.Valor_Vendedor</p>
-        
-
-        <button type="button" onclick="Id_Produto.value = @item.Id" class="btn btn-success" data-toggle="modal" data-target="#ModalComprar">
+        <button type="button" onclick="descricao.innerHTML='@item.Descricao',nome.innerHTML='@item.Nome',valor.innerHTML='R$ @item.Valor_Vendedor', Id_Produto.value = @item.Id" class="btn btn-success" data-toggle="modal" data-target="#ModalComprar">
             Ofertar
         </button>
     </div>

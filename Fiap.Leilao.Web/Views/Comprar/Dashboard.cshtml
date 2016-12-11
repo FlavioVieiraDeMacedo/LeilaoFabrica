@@ -3,8 +3,15 @@
     ViewBag.Title = "Dashboard";
 }
 
-<h2>Dashboard</h2>
+@MeuHelper.Titulo("Comprar")
+@using (Ajax.BeginForm("Buscar", null, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "tabela", InsertionMode = InsertionMode.Replace }, new { @class = "form-inline", id = "formularioBusca" }))
+{
 
+    <div class="form-group">
+        @Html.TextBox("nomeBusca", "", new { @class = "form-control", placeholder = "Filtrar pelo nome" })
+    </div>
+}
+<hr />
 <div class="row" id="tabela">
         @Html.Partial("_tabela", Model)   
 </div>
@@ -15,10 +22,13 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Cadastrar Produto</h4>
+            <h4 class="modal-title" id="myModalLabel">Fazer uma Oferta</h4>
         </div>
         <div class="modal-body">
-            @using (Html.BeginForm("Dashboard", "Comprar", FormMethod.Post, new { @class = "form-inline" }))
+            <h4 id="nome"></h4>
+            <p id="descricao"> </p>
+            <p id="valor"></p>
+            @using (Html.BeginForm("Dashboard", "Comprar", FormMethod.Post, new { @class = "form-inline"}))
                 {
                 <div class="form-group">
                     @Html.TextBoxFor(p => p.Valor_Produto, new { @class = "form-control", placeholder = "Oferta" })
@@ -34,3 +44,10 @@
     </div>
 </div>
 </div>
+<script>
+    $().ready(function () {
+        $("#nomeBusca").change(function () {
+            $("#formularioBusca").submit();
+        });
+    });
+</script>

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Fiap.Leilao.Web.Controllers
 {
+    
     public class UsuarioController : Controller
     {
         #region FIELDs
@@ -29,23 +30,24 @@ namespace Fiap.Leilao.Web.Controllers
 
         //dashboard generico
         [HttpGet]
-        public ActionResult Painel(DashGenericoViewModel dGviewModel)
+        public ActionResult Dashboard(DashGenericoViewModel dGviewModel)
         {
             var viewModel = new DashGenericoViewModel()
             {
-                
+
                 ProdutosEmVenda = ListarProdutosEmVenda(),
-                ProdutosEmCompra=ListarProdutosEmCompra()
+                ProdutosEmCompra = ListarProdutosEmCompra(),
+                ResponderProposta = ContaComprasPendentes(),
+                Vendido = ContaVendidos(),
+                Vendendo = ContaVendendo(),
+                AguardandoResposta = ContaVendasPendentes(),
+                Finalizado = ContaComprados(),
+                Negado = ContaComprasNegados()
+
             };
             return View(viewModel);
         }
-
-        /// <summary>
-        /// Função para verificar existência de cadastro com o e-mail informado
-        /// utilizando ajax
-        /// </summary>
-        /// <param name="email">E-mail informado no input do cadastro de usuário</param>
-        /// <returns>Se existe registro de um usuário com o e-mail</returns>
+        
         [HttpGet]
         public ActionResult VerificarEmail(string email)
         {
@@ -109,7 +111,7 @@ namespace Fiap.Leilao.Web.Controllers
                 ProdutosEmVenda = ListarProdutosEmVenda(),
                 ProdutosEmCompra = ListarProdutosEmCompra()
             };
-            return View("Painel", viewModel);
+            return View("Dashboard", viewModel);
         }
         [HttpPost]
         public ActionResult AceitaProposta(int produtoId2)
@@ -126,7 +128,7 @@ namespace Fiap.Leilao.Web.Controllers
                 ProdutosEmVenda = ListarProdutosEmVenda(),
                 ProdutosEmCompra = ListarProdutosEmCompra()
             };
-            return View("Painel", viewModel);
+            return View("Dashboard", viewModel);
         }
         #endregion
 
@@ -138,7 +140,37 @@ namespace Fiap.Leilao.Web.Controllers
         private ICollection<Negociacao> ListarProdutosEmCompra()
         {
             return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3);
-            
+
+        }
+        private int ContaVendendo()
+        {
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Vendendo");
+            return a.Count();
+        }
+        private int ContaVendidos()
+        {
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Vendido");
+            return a.Count();
+        }
+        private int ContaVendasPendentes()
+        {
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            return a.Count();
+        }
+        private int ContaComprasNegados()
+        {
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            return a.Count();
+        }
+        private int ContaComprasPendentes()
+        {
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            return a.Count();
+        }
+        private int ContaComprados()
+        {
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            return a.Count();
         }
         #endregion
     }
