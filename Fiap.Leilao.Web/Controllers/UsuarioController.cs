@@ -37,10 +37,10 @@ namespace Fiap.Leilao.Web.Controllers
 
                 ProdutosEmVenda = ListarProdutosEmVenda(),
                 ProdutosEmCompra = ListarProdutosEmCompra(),
-                ResponderProposta = ContaComprasPendentes(),
+                ResponderProposta = ContaVendasPendentes(),
                 Vendido = ContaVendidos(),
                 Vendendo = ContaVendendo(),
-                AguardandoResposta = ContaVendasPendentes(),
+                AguardandoResposta = ContaComprasPendentes(),
                 Finalizado = ContaComprados(),
                 Negado = ContaComprasNegados()
 

@@ -7,11 +7,8 @@
 
 
 <div class="row">
+    @MeuHelper.SubTitulo("Produtos em Venda")
     <div class="col-md-6 col-sm-6">
-        @MeuHelper.SubTitulo("Produtos em Venda")
-
-
-
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -31,9 +28,8 @@
     </div>
 </div>
 <div class="row">
+    @MeuHelper.SubTitulo("Produtos em Compra")
     <div class="col-md-6 col-sm-6">
-        @MeuHelper.SubTitulo("Produtos em Compra")
-
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -101,13 +97,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script>
         //Grafico 1
-        var ctx = document.getElementById("grafico1");
-        var myChart = new Chart(ctx, {
+        var ctx1 = document.getElementById("grafico1");
+        var myChart1 = new Chart(ctx1, {
             type: 'bar',
             data: {
                 labels: ["Vendendo", "Vendido", "Propostas a Responder"],
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Vendas',
                     data: [@Model.Vendendo, @Model.Vendido,@Model.ResponderProposta],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -134,13 +130,13 @@
         });
 
         //Grafico 2
-        var ctx = document.getElementById("grafico2");
-        var myChart = new Chart(ctx, {
+        var ctx2 = document.getElementById("grafico2");
+        var myChart2 = new Chart(ctx2, {
             type: 'bar',
             data: {
                 labels: ["Finalizado", "Negado", "Aguardando Responder"],
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Compras',
                     data: [@Model.Finalizado, @Model.Negado,@Model.AguardandoResposta],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

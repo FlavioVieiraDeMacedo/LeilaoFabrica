@@ -53,6 +53,12 @@ namespace Fiap.Leilao.Web.Controllers
         [HttpPost]
         public ActionResult Excluir(int produtoId)
         {
+            var negociacoes = _unit.NegociacaoRepository.BuscarPor(a => a.Id_Produto == produtoId);
+            foreach (var item in negociacoes)
+            {
+                _unit.NegociacaoRepository.Remover(item.Id);
+            }
+            
             _unit.ProdutoRepository.Remover(produtoId);
             _unit.Salvar();
             return RedirectToAction("DashBoard", new { msg = "Produto Deletado com sucesso!" });
