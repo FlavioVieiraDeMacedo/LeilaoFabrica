@@ -7,7 +7,14 @@
             <img src=@item.Imagem class="img-thumbnail" alt=@item.Imagem width="100" height="50">
         </td>
         <td>@item.Nome</td>
-        <td>@item.Valor_Vendedor</td>
+        <td>@if (item.Status_Produto == "Vendido")
+        {
+            @item.Negociacaos.Last().Valor_Produto;
+        }
+        else
+        {
+            @item.Valor_Vendedor
+        }</td>
         <td>
         @if (item.Status_Produto == "Em negociação")
         { 
@@ -20,6 +27,7 @@
             @item.Status_Produto
         }
         </td>
-        
+
+
     </tr>
 }

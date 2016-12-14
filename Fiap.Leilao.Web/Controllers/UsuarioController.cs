@@ -100,7 +100,7 @@ namespace Fiap.Leilao.Web.Controllers
         public ActionResult RecusaProposta(int produtoId)
         {
             var produto = _unit.ProdutoRepository.BuscarPorId(produtoId);
-            var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.First().Id);
+            var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.Last().Id);
             produto.Status_Produto = "Vendendo";
             negociacao.Status = "Negado";
             _unit.ProdutoRepository.Alterar(produto);
@@ -117,7 +117,7 @@ namespace Fiap.Leilao.Web.Controllers
         public ActionResult AceitaProposta(int produtoId2)
         {
             var produto = _unit.ProdutoRepository.BuscarPorId(produtoId2);
-            var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.First().Id);
+            var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.Last().Id);
             produto.Status_Produto = "Vendido";
             negociacao.Status = "Vendido";
             _unit.ProdutoRepository.Alterar(produto);

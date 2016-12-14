@@ -37,7 +37,8 @@ namespace Fiap.Leilao.Web.Controllers
             _unit.NegociacaoRepository.Cadastrar(negociacao);
             _unit.Salvar();
             CompraViewModel compras = PopulaLista();
-            return View(compras);
+            return RedirectToAction("Dashboard", "Usuario");
+
         }
 
         private CompraViewModel PopulaLista()
