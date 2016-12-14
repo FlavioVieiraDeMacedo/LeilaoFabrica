@@ -1,4 +1,5 @@
 ﻿using Fiap.Leilao.Dominio.Models;
+using Fiap.Leilao.Persistencia.UnitsOfWork;
 using Fiap.Leilao.Web.App_Start;
 using Fiap.Leilao.Web.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -19,7 +20,7 @@ namespace Fiap.Leilao.Web.Controllers
         {
             this.userManager = IdentityConfig.UserManagerFactory.Invoke();
         }
-
+        private UnitOfWork _unit = new UnitOfWork();
         #region Dispose
         protected override void Dispose(bool disposing)
         {
@@ -63,17 +64,33 @@ namespace Fiap.Leilao.Web.Controllers
             {
                 UserName = model.Email
             };
+            var usuario = new Usuario()
+            {
+                Nome = model.Nome,
+                Email = model.Email,
+                Senha = model.Password,
+                CPF = model.Cpf,
+                CEP = model.Cep,
+                Numero = model.Numero,
+                Complemento = model.Complemento,
+                Dt_Nascimento = model.DataNascimento,
+                Telefone = model.Telefone
+            };
             var result = await userManager.CreateAsync(user, model.Password);
+            
             if (result.Succeeded)
             {
+                _unit.UsuarioRepository.Cadastrar(usuario);
+                _unit.Salvar();
+
                 var identity = await userManager.CreateIdentityAsync(
                 user, DefaultAuthenticationTypes.ApplicationCookie);
                 GetAuthenticationManager().SignIn(identity);
-                return RedirectToAction("Painel", "Usuario");
+                return RedirectToAction("LogIn", "User");
             }
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                ModelState.AddModelError("deu ruim ", error);
             }
             return View();
         }
@@ -111,7 +128,7 @@ namespace Fiap.Leilao.Web.Controllers
         public ActionResult LogOut()
         {
             GetAuthenticationManager().SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Painel", "Usuario");
+            return RedirectToAction("LogIn", "User");
         }
         #endregion
     }

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Fiap.Leilao.Web.Controllers
 {
-    
+    [Authorize]
     public class UsuarioController : Controller
     {
         #region FIELDs
