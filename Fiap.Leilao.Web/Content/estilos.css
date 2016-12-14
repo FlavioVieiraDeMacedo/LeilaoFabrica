@@ -1,0 +1,465 @@
+﻿body {
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('fonts/roboto/roboto-regular-webfont.woff2') format('woff2'),
+         url('fonts/roboto/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('fonts/roboto/roboto-light-webfont.woff2') format('woff2'),
+         url('fonts/roboto/roboto-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/*NAV NAV NAV NAV*/
+nav.nav{
+    position: fixed;
+    top:0;
+    width: 100%;
+    background: #eee;
+    border-bottom: 1px solid #BFBFBF;
+    overflow: hidden;
+    padding: 10px 0 10px 15px;
+    z-index:1;
+}
+
+nav.nav img{
+    vertical-align:middle;
+}
+
+nav.nav ul{
+    list-style-type: none;
+display: inline-block;
+vertical-align:middle;
+margin:0;
+
+}
+
+nav.nav ul li{
+    display: inline-block;
+    padding: 12px 5px 5px 5px;
+    margin-right: 20px;
+}
+
+
+/*NAV NAV NAV NAV*/
+
+/*HEADER*//*HEADER*//*HEADER*/
+/*HEADER*//*HEADER*//*HEADER*/
+
+div.container{
+    width: 960px;
+    margin:0 auto;
+    overflow:hidden; 
+    text-align: justify;
+}
+
+header.ds-header h1{
+    font-family: 'Arial';
+    font-size:53px;
+    color: #fff;
+    text-align: center;
+}
+
+
+header.ds-header h3{
+  font-family: 'Arial';
+  font-weight: 100;
+  font-size:30px;  
+  color: #fff;
+  text-align: center;
+}
+
+header.ds-header{
+    width: 100% !important;
+    background-size:100%;
+    height: 800px;
+    background-image:url('imagens/back1.jpg');
+    background-attachment:fixed;
+
+}
+
+header.ds-header div.st-parallax{
+    width: 960px;
+    height: 50px;
+    margin:auto;
+    padding:170px 0 0 0;
+
+}
+
+
+
+
+
+
+header.ds-header div.st-parallax img{
+    display: block;
+    margin:0 auto 40px auto;
+
+}
+
+
+header.ds-header div.bt-login{
+    float:right;
+    margin:50px 50px 0 0;
+}
+
+header.ds-header div.bt-login p{
+    font-family: 'robotoregular';
+    color: #fff;
+}
+
+header.ds-header div.bt-login p a{
+    text-decoration: none;
+    font-family: 'robotoregular';
+    color: #fff;
+}
+
+/*HEADER*//*HEADER*//*HEADER*/
+/*HEADER*//*HEADER*//*HEADER*/
+
+
+
+/* SECTION DS LEILON *//* SECTION DS LEILON *//* SECTION DS LEILON */
+/* SECTION DS LEILON *//* SECTION DS LEILON *//* SECTION DS LEILON */
+
+section.ds-leilon{
+    padding:40px 0 0 0;
+}
+
+section.ds-leilon input{
+    width:280px;
+    height: 50px;
+    color:#696969;
+    padding-left: 10px;
+    border:0;
+    background-color: #f9f9f9;
+    /*border-radius: 7px 0px 0 7px;*/
+    border:1px solid #D2D2D2;
+}
+
+section.ds-leilon button{
+    height: 52px;
+    padding: 8px;
+    background-color: #0090B6;
+    color:white;
+    border:0;
+    font-size:12px;
+    
+}
+
+section.ds-leilon article{
+   width: 347px;
+   margin: 0 auto;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #grey;
+}
+
+
+/* SECTION DS LEILON *//* SECTION DS LEILON *//* SECTION DS LEILON */
+/* SECTION DS LEILON *//* SECTION DS LEILON *//* SECTION DS LEILON */
+
+
+
+/* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON */
+/* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+    a:hover {
+        color: #33C9DB;
+    }
+
+
+.preco-produto {
+    font-weight: 700;
+    text-align: center;
+}
+
+.italic {
+    font-style: italic;
+}
+
+
+    .vitrine-grid {
+        display: flex;
+        width: 945px;
+        
+        flex-wrap: wrap;
+        margin:0px auto 0 auto;
+            padding: 0 10px 0 10px;
+    }
+    .vitrine-produto {
+        width: 21%;
+        margin-bottom: 1.5em;
+        transition: all 0.3s ease;
+    }
+        .vitrine-produto:hover {
+            box-shadow: 0px 2px 10px 3px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+
+    .vitrine-descricao {
+        margin:5px;
+        background: #FAFAFA;
+        padding: 25px;
+    }
+    
+    .produtos {
+        display: flex;
+        justify-content: space-between;
+    }
+        
+    figure img {
+        border: 1px solid #FAFAFA;
+        display: block;
+        margin: 0 auto;
+        padding:10px;
+    }
+   
+        .produtos-descricao p {
+            margin-bottom: 3em;
+
+        }
+        .produtos-descricao label {
+            margin-right: 1em;
+        }
+        .produtos-descricao input {
+            width: 100px;
+            height: 45px;
+            background: #FFF;
+            border: 0;
+            padding: 10px;
+            margin-bottom: 3em;
+        }
+        .produtos-descricao ::-webkit-input-placeholder {
+            font-size: 14px;
+        }
+        .produtos-descricao button {
+            padding: 1em;
+            width: 100%;
+            height: 45px;
+            border: 0;
+            font-size: inherit;
+            color: #FFF;
+            background: #33C9DB;
+        }
+
+        .titulo-produto{
+            font-size:20px;
+            color:black;
+            text-align:center;
+        }
+
+
+
+button.enviar{
+    display: block;
+    width: 90px;
+    height: 30px;
+    padding: 8px;
+    background-color: #0090B6;
+    color:white;
+    border:0;
+    font-size:12px;
+    margin: 18px auto 0 auto;
+ 
+}
+
+/* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON */
+/* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON *//* SECTION VITRINE LEILON */
+
+
+/* MODAL MODAL MODAL MODAL*/
+/* MODAL MODAL MODAL MODAL*/
+
+h4.titulo-modal {
+    text-align:center;
+    font-size:20px;
+    font-family:Roboto;
+    font-weight:700;
+}
+
+h4.nome-modal {
+    text-align:center;
+    font-family:robotoregular;
+}
+
+p.nome-modal {
+    text-align:center;
+    font-family:Roboto;
+    font-weight:900;
+}
+
+
+h4.desc-modal {
+    text-align:center;
+    font-family:robotoregular;
+}
+
+p.desc-modal {
+    text-align:center;
+    font-family:Roboto;
+    font-weight:900;
+}
+
+h4.valor-modal {
+    text-align:center;
+    font-family:robotoregular;
+}
+
+p.valor-modal {
+    text-align:center;
+    font-family:Roboto;
+    font-weight:900;
+}
+
+p.oferta-modal {
+    text-align:center;
+    font-family:Roboto;
+    font-weight:900;
+}
+
+.inputs-modal{
+    display:block;
+    margin:0 auto;
+    width:280px;
+    height: 50px;
+    color:#696969;
+    padding-left: 10px;
+    border:0;
+    background-color: #f9f9f9;
+    /*border-radius: 7px 0px 0 7px;*/
+    border:1px solid #D2D2D2;
+}
+
+.btn-oferta {
+     height: 52px;
+    padding: 8px;
+    background-color: #82c784;
+    color:white;
+    border:0;
+    font-size:12px;
+}
+
+ .btn-cancelar {
+     height: 52px;
+    padding: 8px;
+    background-color: #e57373;
+    color:white;
+    border:0;
+    font-size:12px;
+}
+
+div.botoes {
+    width:153px;
+    margin:0 auto;
+}
+
+/* MODAL MODAL MODAL MODAL*/
+/* MODAL MODAL MODAL MODAL*/
+
+
+
+/* SECTION DS VANTAGENS *//* SECTION DS VANTAGENS */
+/* SECTION DS VANTAGENS *//* SECTION DS VANTAGENS */
+
+section.ds-vantagens{
+    padding:0px 0 0 0;
+}
+
+section.ds-vantagens hr{
+    margin:0 400px 0 400px;
+}
+
+section.ds-vantagens h2{
+    text-align: center;
+    font-family:Roboto;
+    margin-bottom:10px;
+    font-size: 50px;
+    color: #696969;
+}
+
+section.ds-vantagens div.back-img-one{
+    background-image: url('imagens/background-one.jpg');
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: 100%;
+    height:400px;
+    margin: 40px 0 0 0;
+}
+
+h1.vant{
+       margin: 150px 0 0 0;
+    color: white;
+    text-align: center;
+    font-size: 60px;
+}
+
+section.ds-vantagens h3 {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+section.ds-vantagens div.back-img-two{
+    background-image: url('imagens/background-two.jpg');
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: 100%;
+    height:400px;
+}
+
+section.ds-vantagens div.back-img-three{
+    background-image: url('imagens/background-three.jpg');
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: 100%;
+    height:400px;
+}
+
+section.ds-vantagens div.back-img-four{
+    background-image: url('imagens/background-four.jpg');
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: 100%;
+    height:400px;
+}
+
+/* SECTION DS VANTAGENS *//* SECTION DS VANTAGENS */
+/* SECTION DS VANTAGENS *//* SECTION DS VANTAGENS */
+
+/* ----- */
+
+
+
+
+
+/* FOOTER FOOTER FOOTER */
+/* FOOTER FOOTER FOOTER */
+
+footer p {
+    margin-top:10px;
+    text-align:center;
+}
+
+/* FOOTER FOOTER FOOTER */
+/* FOOTER FOOTER FOOTER */

@@ -1,48 +1,142 @@
 ﻿@model Fiap.Leilao.Web.ViewModels.CompraViewModel
+
 @{
     ViewBag.Title = "Dashboard";
 }
 
-@MeuHelper.Titulo("Comprar")
-@using (Ajax.BeginForm("Buscar", null, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "tabela", InsertionMode = InsertionMode.Replace }, new { @class = "form-inline", id = "formularioBusca" }))
-{
 
-    <div class="form-group">
-        @Html.TextBox("nomeBusca", "", new { @class = "form-control", placeholder = "Filtrar pelo nome" })
-    </div>
+@section topo {
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
+    <header class="ds-header">
+        <div class="bt-login">
+            <!--<p><a href="">ENTRAR</a> | <a href="">CADASTRE-SE</a></p> -->
+        </div>
+
+        <div class="st-parallax">
+            <img src="~/Content/imagens/logo.png" alt="" />
+            <h1>EFICÁCIA EM COMPRAS ONLINE</h1>
+            <h3>CLICAR, AGUARDAR, COMPRAR</h3>
+        </div>
+
+
+    </header>
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
+}
+
+
+
+@section busca {
+    <!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON -->
+    <!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON -->
+    <section class="ds-leilon">
+        <div class="container">
+            <article>
+                @using (Ajax.BeginForm("Buscar", null, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "tabela", InsertionMode = InsertionMode.Replace }, new { id = "formularioBusca" }))
+                {
+
+
+                    @Html.TextBox("nomeBusca", "", new { @class = "inputs", placeholder = "Digite o que você está buscando..." })<button type="submit">BUSCAR</button>
+
+                }
+
+
+            </article>
+        </div>
+
+    </section> <!-- fim section frecom -->
+    <!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON -->
+    <!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON --><!-- SECTION DS LEILON -->
 }
 <hr />
-<div class="row" id="tabela">
-        @Html.Partial("_tabela", Model)   
-</div>
 
+@Html.Partial("_tabela", Model)
+
+@section vantagens{
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+    <section class="ds-vantagens">
+        <hr>
+        <strong><h2>VANTAGENS</h2></strong>
+        <hr>
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+        <div class="back-img-one">
+            <div class="container">
+                <h1 class="vant">BUSQUE TUDO EM UM LUGAR</h1>
+                <h3>OS MELHORES VENDEDORES REUNIDOS </h3>
+            </div>
+        </div>
+
+
+        <div class="back-img-two">
+            <div class="container">
+                <h1 class="vant">VOCÊ COMPRA ONLINE</h1>
+                <h3>COMO SE ESTIVESSE COMPRANDO PESSOALMENTE</h3>
+            </div>
+        </div>
+
+        <div class="back-img-three">
+            <div class="container">
+                <h1 class="vant">LONGAS PESQUISAS JAMAIS</h1>
+                <h3>TUDO HÁ POUCOS CLIQUES</h3>
+            </div>
+        </div>
+
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+    </section>
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+}
 
 <div class="modal fade" id="ModalComprar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Fazer uma Oferta</h4>
-        </div>
-        <div class="modal-body">
-            <h4 id="nome"></h4>
-            <p id="descricao"> </p>
-            <p id="valor"></p>
-            @using (Html.BeginForm("Dashboard", "Comprar", FormMethod.Post, new { @class = "form-inline"}))
-                {
-                <div class="form-group">
-                    @Html.TextBoxFor(p => p.Valor_Produto, new { @class = "form-control", placeholder = "Oferta" })
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="titulo-modal">Faça uma Oferta</h4>
+            </div>
+                <div class="modal-body">
+                <p class="nome-modal">Esse é o seu produto...</p>
+                <h4 id="nome" class="nome-modal"></h4>
+                <p class="desc-modal">Saiba mais...</p>
+                <h4 id="descricao" class="desc-modal"> </h4>
+                <p class="valor-modal">Preço Base...</p>
+                <h4 id="valor" class="valor-modal"></h4>
                     
-                </div>
-                @Html.HiddenFor(p=>p.Id_Produto)
-                    
-                    @MeuHelper.Submit("Enviar Oferta", "btn btn-primary")
 
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            }
+                @using (Html.BeginForm("Dashboard", "Comprar", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    string nomeImagem = "";
+
+                    if (Model.Id_Produto != null)
+                    {
+                         nomeImagem = Model.Produtos.FirstOrDefault(a => a.Id_Vendedor == Model.Id_Vendedor).Imagem;
+                    }
+                    if (nomeImagem != null)
+                    {
+                        <figure>
+                            <img src="@nomeImagem" alt=@nomeImagem width="150" height="99">
+                        </figure>
+                    }
+                    <p class="oferta-modal">Deseja fazer uma oferta?</p>
+                    @Html.TextBoxFor(p => p.Valor_Produto, new { @class = "inputs-modal", placeholder = "Oferta" })<br />
+                   
+
+
+                    @Html.HiddenFor(p => p.Id_Produto)
+                    <div class="botoes">
+                        @MeuHelper.Submit("Enviar Oferta", "btn-oferta")
+
+                        <button type="button" class="btn-cancelar" data-dismiss="modal">Cancelar</button>
+                    </div>
+                }
+
+            </div>
         </div>
     </div>
-</div>
 </div>
 <script>
     $().ready(function () {

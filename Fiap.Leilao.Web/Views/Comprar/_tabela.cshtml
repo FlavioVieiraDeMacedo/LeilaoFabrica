@@ -1,14 +1,22 @@
 ﻿@model Fiap.Leilao.Web.ViewModels.CompraViewModel
-@foreach (var item in Model.Produtos)
-{
-    <div class="col-md-3">
-        <td>
-            <img src=@item.Imagem class="img-thumbnail" alt=@item.Imagem width="100" height="50">
-        </td>
-        <p>@item.Nome</p>
-        <p>R$ @item.Valor_Vendedor</p>
-        <button type="button" onclick="descricao.innerHTML='@item.Descricao',nome.innerHTML='@item.Nome',valor.innerHTML='R$ @item.Valor_Vendedor', Id_Produto.value = @item.Id" class="btn btn-success" data-toggle="modal" data-target="#ModalComprar">
-            Ofertar
-        </button>
-    </div>
-}
+
+<section class="vitrine-grid">
+    @foreach (var item in Model.Produtos)
+    {
+        <section class="vitrine-produto">
+            <section class="vitrine-descricao">
+                <figure>
+                    <img src="@item.Imagem" alt=@item.Imagem width="150" height="99">
+                </figure>
+                <h3 class="titulo-produto">@item.Nome</h3>
+                <p class="preco-produto">R$ @item.Valor_Vendedor</p>
+                <button type="button" onclick="descricao.innerHTML='@item.Descricao',nome.innerHTML='@item.Nome',valor.innerHTML='R$ @item.Valor_Vendedor', Id_Produto.value = @item.Id" class="enviar" data-toggle="modal" data-target="#ModalComprar">
+                    Ofertar
+                </button>
+            </section>
+
+
+        </section>
+
+    }
+</section>    

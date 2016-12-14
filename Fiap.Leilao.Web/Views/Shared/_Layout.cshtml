@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/estilos.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <!--<div class="navbar navbar-inverse navbar-fixed-top">
+
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,25 +22,39 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Home", "Dashboard", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Comprar", "Dashboard", "Comprar", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Vender", "Dashboard", "Vender", new { area = "" }, new { @class = "navbar-brand" })
+             
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>
             </div>
         </div>
-    </div>
+    </div>-->
+    <nav class="nav">
+        <div class="container">
+            <img src="~/Content/imagens/leilon.png">
+
+            <ul>
+                <li>@Html.ActionLink("Home", "Dashboard", "Usuario", new { area = "" }, new { @class = "navbar-brand" })</li>
+                <li>@Html.ActionLink("Comprar", "Dashboard", "Comprar", new { area = "" }, new { @class = "navbar-brand" })</li>
+                <li>@Html.ActionLink("Vender", "Dashboard", "Vender", new { area = "" }, new { @class = "navbar-brand" })</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header-layout">@RenderSection("topo", false)</div>
+    <div class="busca-layout">@RenderSection("busca", false)</div>
+    
 
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        
     </div>
+    <div class="vantagens-layout">@RenderSection("vantagens", false)</div>
+    <footer class="container">
+        <p>&copy; @DateTime.Now.Year - Grupo do Fábrica de Desenvolvedores</p>
+    </footer>
     <script src="~/scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
