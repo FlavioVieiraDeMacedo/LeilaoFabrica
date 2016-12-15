@@ -32,8 +32,9 @@
     </div>-->
     <nav class="nav">
         <div class="container">
-            <img src="~/Content/imagens/leilon.png">
-
+            <a href='@Url.Action("Home", "Comprar")'>
+                <img src="~/Content/imagens/leilon.png" />
+            </a>
             <ul>
                 <li>@Html.ActionLink("Home", "Dashboard", "Usuario", new { area = "" }, new { @class = "navbar-brand" })</li>
                 <li>@Html.ActionLink("Comprar", "Dashboard", "Comprar", new { area = "" }, new { @class = "navbar-brand" })</li>

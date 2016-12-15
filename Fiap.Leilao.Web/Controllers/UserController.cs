@@ -120,9 +120,6 @@ namespace Fiap.Leilao.Web.Controllers
             ModelState.AddModelError("", "Usuário e/ou Senha inválidos");
             return View("Register");
         }
-        /**/
-       
-        /**/
 
         #endregion
         #region LogOut
