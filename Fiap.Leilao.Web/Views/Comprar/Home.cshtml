@@ -1,7 +1,26 @@
 ﻿@model Fiap.Leilao.Web.ViewModels.CompraViewModel
-
 @{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = "Home";
+}
+
+@section topo {
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
+    <header class="ds-header">
+        <div class="bt-login">
+            <!--<p><a href="">ENTRAR</a> | <a href="">CADASTRE-SE</a></p> -->
+        </div>
+
+        <div class="st-parallax">
+            <img src="~/Content/imagens/logo.png" alt="" />
+            <h1>EFICÁCIA EM COMPRAS ONLINE</h1>
+            <h3>CLICAR, AGUARDAR, COMPRAR</h3>
+        </div>
+
+
+    </header>
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
+    <!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER --><!-- HEADER -->
 }
 
 
@@ -12,7 +31,7 @@
     <section class="ds-leilon">
         <div class="container">
             <article>
-                @using (Ajax.BeginForm("Buscar", null, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "tabela", InsertionMode = InsertionMode.Replace }, new { id = "formularioBusca" }))
+                @using (Ajax.BeginForm("BuscarHome", null, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "tabela", InsertionMode = InsertionMode.Replace }, new { id = "formularioBusca" }))
                 {
 
 
@@ -31,6 +50,44 @@
 <hr />
 
 @Html.Partial("_tabela", Model)
+
+@section vantagens{
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+    <section class="ds-vantagens">
+        <hr>
+        <strong><h2>VANTAGENS</h2></strong>
+        <hr>
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+        <div class="back-img-one">
+            <div class="container">
+                <h1 class="vant">BUSQUE TUDO EM UM LUGAR</h1>
+                <h3>OS MELHORES VENDEDORES REUNIDOS </h3>
+            </div>
+        </div>
+
+
+        <div class="back-img-two">
+            <div class="container">
+                <h1 class="vant">VOCÊ COMPRA ONLINE</h1>
+                <h3>COMO SE ESTIVESSE COMPRANDO PESSOALMENTE</h3>
+            </div>
+        </div>
+
+        <div class="back-img-three">
+            <div class="container">
+                <h1 class="vant">LONGAS PESQUISAS JAMAIS</h1>
+                <h3>TUDO HÁ POUCOS CLIQUES</h3>
+            </div>
+        </div>
+
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+        <!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK--><!-- SECTION DS BACK-->
+    </section>
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+    <!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS --><!-- SECTION DS VANTAGENS -->
+}
 
 <div class="modal fade" id="ModalComprar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

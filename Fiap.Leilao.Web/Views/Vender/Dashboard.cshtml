@@ -91,6 +91,7 @@
                     </div>
                     @Html.HiddenFor(p => p.Id)
                     @Html.HiddenFor(p => p.Id_Vendedor2)
+                    @Html.HiddenFor(p=>p.Status_Produto)
                     @MeuHelper.Submit("Salvar Alteração", "btn btn-primary")
 
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

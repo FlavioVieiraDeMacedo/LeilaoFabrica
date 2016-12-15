@@ -32,17 +32,22 @@ namespace Fiap.Leilao.Web.Controllers
         [HttpGet]
         public ActionResult Dashboard(DashGenericoViewModel dGviewModel)
         {
-            var viewModel = new DashGenericoViewModel()
+            
+        /**/
+            var usuario = _unit.UsuarioRepository.BuscarPor(u => u.Email == User.Identity.Name);
+            var usuarioId = usuario.First().Id;
+        /**/
+        var viewModel = new DashGenericoViewModel()
             {
 
-                ProdutosEmVenda = ListarProdutosEmVenda(),
-                ProdutosEmCompra = ListarProdutosEmCompra(),
-                ResponderProposta = ContaVendasPendentes(),
-                Vendido = ContaVendidos(),
-                Vendendo = ContaVendendo(),
-                AguardandoResposta = ContaComprasPendentes(),
-                Finalizado = ContaComprados(),
-                Negado = ContaComprasNegados()
+                ProdutosEmVenda = ListarProdutosEmVenda(usuarioId),
+                ProdutosEmCompra = ListarProdutosEmCompra(usuarioId),
+                ResponderProposta = ContaVendasPendentes(usuarioId),
+                Vendido = ContaVendidos(usuarioId),
+                Vendendo = ContaVendendo(usuarioId),
+                AguardandoResposta = ContaComprasPendentes(usuarioId),
+                Finalizado = ContaComprados(usuarioId),
+                Negado = ContaComprasNegados(usuarioId)
 
             };
             return View(viewModel);
@@ -99,6 +104,11 @@ namespace Fiap.Leilao.Web.Controllers
         [HttpPost]
         public ActionResult RecusaProposta(int produtoId)
         {
+            /**/
+            var usuario = _unit.UsuarioRepository.BuscarPor(u => u.Email == User.Identity.Name);
+            var usuarioId = usuario.First().Id;
+            /**/
+
             var produto = _unit.ProdutoRepository.BuscarPorId(produtoId);
             var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.Last().Id);
             produto.Status_Produto = "Vendendo";
@@ -108,14 +118,18 @@ namespace Fiap.Leilao.Web.Controllers
             _unit.Salvar();
             var viewModel = new DashGenericoViewModel()
             {
-                ProdutosEmVenda = ListarProdutosEmVenda(),
-                ProdutosEmCompra = ListarProdutosEmCompra()
+                ProdutosEmVenda = ListarProdutosEmVenda(usuarioId),
+                ProdutosEmCompra = ListarProdutosEmCompra(usuarioId)
             };
             return View("Dashboard", viewModel);
         }
         [HttpPost]
         public ActionResult AceitaProposta(int produtoId2)
         {
+            /**/
+            var usuario = _unit.UsuarioRepository.BuscarPor(u => u.Email == User.Identity.Name);
+            var usuarioId = usuario.First().Id;
+            /**/
             var produto = _unit.ProdutoRepository.BuscarPorId(produtoId2);
             var negociacao = _unit.NegociacaoRepository.BuscarPorId(produto.Negociacaos.Last().Id);
             produto.Status_Produto = "Vendido";
@@ -125,53 +139,56 @@ namespace Fiap.Leilao.Web.Controllers
             _unit.Salvar();
             var viewModel = new DashGenericoViewModel()
             {
-                ProdutosEmVenda = ListarProdutosEmVenda(),
-                ProdutosEmCompra = ListarProdutosEmCompra()
+                ProdutosEmVenda = ListarProdutosEmVenda(usuarioId),
+                ProdutosEmCompra = ListarProdutosEmCompra(usuarioId)
             };
             return View("Dashboard", viewModel);
         }
         #endregion
 
         #region PRIVATEs
-        private ICollection<Produto> ListarProdutosEmVenda()
+        
+        private ICollection<Produto> ListarProdutosEmVenda(int id)
         {
-            return _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3); 
+            return _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == id); 
         }
-        private ICollection<Negociacao> ListarProdutosEmCompra()
+        private ICollection<Negociacao> ListarProdutosEmCompra(int id)
         {
-            return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3);
+            return _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == id);
 
         }
-        private int ContaVendendo()
+        private int ContaVendendo(int id)
         {
-            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Vendendo");
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == id && n.Status_Produto == "Vendendo");
             return a.Count();
         }
-        private int ContaVendidos()
+        private int ContaVendidos(int id)
         {
-            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Vendido");
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == id && n.Status_Produto == "Vendido");
             return a.Count();
         }
-        private int ContaVendasPendentes()
+        private int ContaVendasPendentes(int id)
         {
-            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == 3 && n.Status_Produto == "Em negociação");
+            var a = _unit.ProdutoRepository.BuscarPor(n => n.Id_Vendedor == id && n.Status_Produto == "Em negociação");
             return a.Count();
         }
-        private int ContaComprasNegados()
+        private int ContaComprasNegados(int id)
         {
-            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3 && n.Status == "Negado");
+            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == id && n.Status == "Negado");
             return a.Count();
         }
-        private int ContaComprasPendentes()
+        private int ContaComprasPendentes(int id)
         {
-            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3 && n.Status == "Aguardando Resposta");
+            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == id && n.Status == "Aguardando Resposta");
             return a.Count();
         }
-        private int ContaComprados()
+        private int ContaComprados(int id)
         {
-            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == 3 && n.Status == "Vendido");
+            var a = _unit.NegociacaoRepository.BuscarPor(n => n.Id_Comprador == id && n.Status == "Vendido");
             return a.Count();
         }
+
+        
         #endregion
     }
 }

@@ -22,5 +22,6 @@ namespace Fiap.Leilao.Web.ViewModels
         public string Imagem2 { get; set; }
         public Nullable<decimal> Valor_Vendedor2 { get; set; }
         public Nullable<int> Id_Vendedor2 { get; set; }
+        public string Status_Produto { get; set; }
     }
 }

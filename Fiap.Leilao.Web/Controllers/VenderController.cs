@@ -9,23 +9,28 @@ using System.Web.Mvc;
 
 namespace Fiap.Leilao.Web.Controllers
 {
+    [Authorize]
     public class VenderController : Controller
     {
         private UnitOfWork _unit = new UnitOfWork();
         [HttpGet]
         public ActionResult DashBoard(string msg)
         {
+            var usuario = _unit.UsuarioRepository.BuscarPor(a => a.Email == User.Identity.Name);
+            var id = usuario.First().Id;
             var viewModel = new ProdutoViewModel()
             {
                 Mensagem = msg,
-                Produtos = _unit.ProdutoRepository.Listar()
-            };
+                Produtos = _unit.ProdutoRepository.BuscarPor(a=>a.Id_Vendedor == id)
+        };
             return View(viewModel);
         }
         [HttpGet]
         public ActionResult Buscar(string nomeBusca)
         {
-            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca));
+            var usuario = _unit.UsuarioRepository.BuscarPor(a => a.Email == User.Identity.Name);
+            var id = usuario.First().Id;
+            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca)&& a.Id_Vendedor == id);
             var viewModel = new ProdutoViewModel()
             {
                 Produtos = lista
@@ -36,13 +41,14 @@ namespace Fiap.Leilao.Web.Controllers
         [HttpPost]
         public ActionResult Cadastrar(ProdutoViewModel viewModel)
         {
+            var usuario = _unit.UsuarioRepository.BuscarPor(a => a.Email == User.Identity.Name);
             Produto produto = new Produto()
             {
                Id=viewModel.Id,
                Nome=viewModel.Nome,
                Descricao=viewModel.Descricao,
                Imagem=viewModel.Imagem,
-               Id_Vendedor= 3,//Modificar na autenticacao
+               Id_Vendedor= usuario.First().Id,
                Valor_Vendedor=viewModel.Valor_Vendedor,
                Status_Produto="Vendendo"
             };
@@ -73,7 +79,8 @@ namespace Fiap.Leilao.Web.Controllers
                 Descricao = viewModel.Descricao2,
                 Imagem = viewModel.Imagem2,
                 Valor_Vendedor=viewModel.Valor_Vendedor2,
-                Id_Vendedor=viewModel.Id_Vendedor
+                Id_Vendedor=viewModel.Id_Vendedor2,
+                Status_Produto=viewModel.Status_Produto
             };
             _unit.ProdutoRepository.Alterar(Produto);
             _unit.Salvar();
