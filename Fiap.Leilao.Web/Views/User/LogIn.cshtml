@@ -1,35 +1,50 @@
 ﻿@model Fiap.Leilao.Web.ViewModels.UserViewModel
+<div class="espaco" /> </div>
 @{
     ViewBag.Title = "LogIn";
 }
 
-<h2>LogIn</h2>
+
+@section login{
+
 @if (User.Identity.IsAuthenticated)
 {
     @User.Identity.Name
 }
 
-@using (Html.BeginForm())
-{
-    <div class="col-md-4 col-sm-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">Informações de Usuário</div>
-            <div class="panel-body">
-                <div class="form-group">
-                    @Html.LabelFor(u => u.Email)
-                    @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+
+    <div class="login">
+        @using (Html.BeginForm())
+    {
+
+            <header>
+                <div class="container">
+                    <section class="header-top">
+                        <img src="~/Content/imagens/logo.png" alt="" />
+                        <h1>Trazendo eficácia para as suas compras online</h1>
+                    </section>
+                    <section class="body-login">
+                        <div class="caixa">
+                            @Html.TextBoxFor(u => u.Email, new { @class = "email", placeholder = "E-mail" })
+
+                            @Html.TextBoxFor(u => u.Password, new { @class = "senha", placeholder = "Senha", Type ="password"})
+
+
+                            <div class="links">
+                                <input type="submit" value="ENTRAR" class="buttons">
+                                @Html.ActionLink("Inscreva-se gratuitamente", "Register", "User", new { area = "" }, new { @class = "under" })
+                            
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(u => u.Password)
-                    @Html.TextBoxFor(u => u.Password, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="panel-footer">
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success" value="Enviar" />
-                    @Html.ActionLink("Registrar", "Register", "User", new { area = "" }, new { @class = "btn btn-danger" })
-                </div>
-            </div>
-        </div>
+            </header>
+
+
+
+        }
+
+
+
     </div>
 }

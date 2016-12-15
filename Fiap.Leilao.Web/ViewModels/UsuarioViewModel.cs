@@ -35,6 +35,8 @@ namespace Fiap.Leilao.Web.ViewModels
        // [StringLength(255)]
         public string Complemento { get; set; }
         [Required]
+
+        [Display(Name = "Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
         [Required]
        // [StringLength(13)]
