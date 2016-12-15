@@ -9,6 +9,7 @@ namespace Fiap.Leilao.Web.ViewModels
 {
     public class UserViewModel
     {
+        public string Mensagem { get; set; }
         #region LogIn
         [Required]
         [DataType(DataType.EmailAddress)]

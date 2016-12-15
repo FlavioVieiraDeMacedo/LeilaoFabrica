@@ -3,6 +3,7 @@ using Fiap.Leilao.Persistencia.UnitsOfWork;
 using Fiap.Leilao.Web.App_Start;
 using Fiap.Leilao.Web.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace Fiap.Leilao.Web.Controllers
         {
             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                return Url.Action("Painel", "Usuario");
+                return Url.Action("DashBoard", "Usuario");
             }
             return returnUrl;
         }
@@ -108,10 +109,6 @@ namespace Fiap.Leilao.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> LogIn(UserViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
             var user = await userManager.FindAsync(model.Email, model.Password);
             if (user != null)
             {
@@ -121,8 +118,12 @@ namespace Fiap.Leilao.Web.Controllers
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
             }
             ModelState.AddModelError("", "Usuário e/ou Senha inválidos");
-            return View();
+            return View("Register");
         }
+        /**/
+       
+        /**/
+
         #endregion
         #region LogOut
         public ActionResult LogOut()
