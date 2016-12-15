@@ -13,7 +13,7 @@ namespace Fiap.Leilao.Web.Controllers
     public class ComprarController : Controller
     {
         private UnitOfWork _unit = new UnitOfWork();
-        // GET: Comprar
+        #region GET
         [HttpGet]
         public ActionResult Dashboard()
         {
@@ -21,6 +21,45 @@ namespace Fiap.Leilao.Web.Controllers
             CompraViewModel compras = PopulaLista();
             return View(compras);
         }
+        [HttpGet]
+        public ActionResult Buscar(string nomeBusca)
+        {
+            var usuario = _unit.UsuarioRepository.BuscarPor(a => a.Email == User.Identity.Name);
+            var id = usuario.First().Id;
+            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca) && a.Status_Produto == "Vendendo" && a.Id_Vendedor != id);
+            var viewModel = new CompraViewModel()
+            {
+                Produtos = lista
+            };
+            return PartialView("_tabela", viewModel);
+
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult BuscarHome(string nomeBusca)
+        {
+
+            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca) && a.Status_Produto == "Vendendo");
+            var viewModel = new CompraViewModel()
+            {
+                Produtos = lista
+            };
+            return PartialView("_tabela", viewModel);
+
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Home()
+        {
+
+            CompraViewModel compras = new CompraViewModel
+            {
+                Produtos = _unit.ProdutoRepository.BuscarPor(p => p.Status_Produto == "Vendendo")
+            };
+            return View(compras);
+        }
+        #endregion
+        #region POST
         [HttpPost]
         public ActionResult Dashboard(CompraViewModel compraViewModel)
         {
@@ -42,7 +81,8 @@ namespace Fiap.Leilao.Web.Controllers
             return RedirectToAction("Dashboard", "Usuario");
 
         }
-
+        #endregion
+        #region Private
         private CompraViewModel PopulaLista()
         {
             var usuario = _unit.UsuarioRepository.BuscarPor(a => a.Email == User.Identity.Name);
@@ -54,43 +94,10 @@ namespace Fiap.Leilao.Web.Controllers
 
             };
         }
+        #endregion
 
-        [HttpGet]
-        public ActionResult Buscar(string nomeBusca)
-        {
-            var usuario = _unit.UsuarioRepository.BuscarPor(a => a.Email == User.Identity.Name);
-            var id = usuario.First().Id;
-            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca) && a.Status_Produto == "Vendendo" && a.Id_Vendedor != id);
-            var viewModel = new CompraViewModel()
-            {
-                Produtos = lista
-            };
-            return PartialView("_tabela", viewModel);
 
-        }
-        [AllowAnonymous]
-        [HttpGet]
-        public ActionResult BuscarHome(string nomeBusca)
-        {
-            
-            var lista = _unit.ProdutoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca) && a.Status_Produto == "Vendendo" );
-            var viewModel = new CompraViewModel()
-            {
-                Produtos = lista
-            };
-            return PartialView("_tabela", viewModel);
-
-        }
-        [AllowAnonymous]
-        [HttpGet]
-        public ActionResult Home()
-        {
-
-            CompraViewModel compras = new CompraViewModel
-            {
-                Produtos = _unit.ProdutoRepository.BuscarPor(p => p.Status_Produto == "Vendendo")
-            };
-            return View(compras);
-        }
+        
+       
     }
 }

@@ -236,7 +236,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComprarController.cs" />
-    <Compile Include="Controllers\GraficosController.cs" />
     <Compile Include="Controllers\VenderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -265,7 +264,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Usuario\Cadastrar.cshtml" />
     <Content Include="Views\Usuario\Dashboard.cshtml" />
     <Content Include="Views\Comprar\Dashboard.cshtml" />
     <Content Include="Views\Comprar\_tabela.cshtml" />
@@ -273,7 +271,6 @@
     <Content Include="Views\Usuario\_tabelaCompras.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
-    <Content Include="Views\Graficos\Index.cshtml" />
     <Content Include="Views\Comprar\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

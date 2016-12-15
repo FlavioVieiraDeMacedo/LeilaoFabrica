@@ -26,7 +26,6 @@ namespace Fiap.Leilao.Web.App_Start
             {
                 var usermanager = new UserManager<User>(
                 new UserStore<User>(new UserContext()));
-                // permite caracteres alfa numéricos no username
                 usermanager.UserValidator = new UserValidator<User>(usermanager)
                 {
                     AllowOnlyAlphanumericUserNames = false
