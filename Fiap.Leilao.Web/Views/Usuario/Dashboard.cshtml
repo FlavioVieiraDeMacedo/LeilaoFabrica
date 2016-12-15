@@ -2,11 +2,11 @@
 @{
     ViewBag.Title = "Painel";
 }
-
+<div class="espaco"/> </div>
 @MeuHelper.Titulo("Painel do Usuário")
 @User.Identity.Name
 
-<div class="row">
+<div class="row-fluid">
     @MeuHelper.SubTitulo("Produtos em Venda")
     <div class="col-md-6 col-sm-6">
         <table class="table table-striped">
@@ -27,7 +27,7 @@
         <canvas id="grafico1" width="400" height="400"></canvas>
     </div>
 </div>
-<div class="row">
+<div class="row-fluid">
     @MeuHelper.SubTitulo("Produtos em Compra")
     <div class="col-md-6 col-sm-6">
         <table class="table table-striped">
