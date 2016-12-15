@@ -109,7 +109,7 @@
 
                 @using (Html.BeginForm("Dashboard", "Comprar", FormMethod.Post, new { @class = "form-inline" }))
                 {
-                    string nomeImagem = "";
+                   string nomeImagem = "";
 
                     if (Model.Id_Produto != null)
                     {
@@ -118,7 +118,7 @@
                     if (nomeImagem != null)
                     {
                         <figure>
-                            <img src="@nomeImagem" alt=@nomeImagem width="150" height="99">
+                            <img src="@nomeImagem" alt=@nomeImagem>
                         </figure>
                     }
                     <p class="oferta-modal">Deseja fazer uma oferta?</p>

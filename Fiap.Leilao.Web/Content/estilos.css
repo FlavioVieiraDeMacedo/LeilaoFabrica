@@ -366,14 +366,12 @@ p.oferta-modal {
 }
 
 div.botoes {
-    width:153px;
+    width:170px;
     margin:0 auto;
 }
 
 /* MODAL MODAL MODAL MODAL*/
 /* MODAL MODAL MODAL MODAL*/
-
-
 
 /* SECTION DS VANTAGENS *//* SECTION DS VANTAGENS */
 /* SECTION DS VANTAGENS *//* SECTION DS VANTAGENS */
@@ -463,3 +461,7 @@ footer p {
 
 /* FOOTER FOOTER FOOTER */
 /* FOOTER FOOTER FOOTER */
+
+.espaco {
+    margin:20px 0 0 0;
+}
