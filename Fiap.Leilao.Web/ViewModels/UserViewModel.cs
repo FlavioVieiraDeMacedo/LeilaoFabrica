@@ -9,6 +9,7 @@ namespace Fiap.Leilao.Web.ViewModels
 {
     public class UserViewModel
     {
+        #region LogIn
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -16,6 +17,26 @@ namespace Fiap.Leilao.Web.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [HiddenInput]
-        public string ReturnUrl { get; set; }
+        public string ReturnUrl { get; set; }
+        #endregion
+        #region Informacoes Pessoais
+        public string Nome { get; set; }
+        [Required]
+        //[StringLength(14)]
+        public string Cpf { get; set; }
+        [Required]
+        // [StringLength(11)]
+        public string Cep { get; set; }
+        [Required]
+        // [StringLength(5)]
+        public int Numero { get; set; }
+        // [StringLength(255)]
+        public string Complemento { get; set; }
+        [Required]
+        public DateTime DataNascimento { get; set; }
+        [Required]
+        // [StringLength(13)]
+        public string Telefone { get; set; }
+        #endregion
     }
 }

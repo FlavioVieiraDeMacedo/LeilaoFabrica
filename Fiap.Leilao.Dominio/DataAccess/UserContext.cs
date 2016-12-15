@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fiap.Leilao.Dominio.DataAccess
 {
-    public class UserContext : IdentityDbContext<User>
+    public class UserContext : IdentityDbContext<User>
     {
     }
 }

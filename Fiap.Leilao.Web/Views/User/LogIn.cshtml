@@ -4,6 +4,10 @@
 }
 
 <h2>LogIn</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    @User.Identity.Name
+}
 
 @using (Html.BeginForm())
 {
@@ -23,7 +27,7 @@
             <div class="panel-footer">
                 <div class="form-group">
                     <input type="submit" class="btn btn-success" value="Enviar" />
-                    <input type="reset" class="btn btn-danger" value="Limpar" />
+                    @Html.ActionLink("Registrar", "Register", "User", new { area = "" }, new { @class = "btn btn-danger" })
                 </div>
             </div>
         </div>
