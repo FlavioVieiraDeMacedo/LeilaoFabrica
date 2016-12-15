@@ -17,27 +17,20 @@
             <a href='@Url.Action("Home", "Comprar")'>
                 <img src="~/Content/imagens/leilon.png" />
             </a>
-            <ul>
-                <li>@Html.ActionLink("Home", "Dashboard", "Usuario", new { area = "" }, new { @class = "navbar-brand" })</li>
+            <ul>@if (User.Identity.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Painel", "Dashboard", "Usuario", new { area = "" }, new { @class = "navbar-brand" })</li>
                 <li>@Html.ActionLink("Comprar", "Dashboard", "Comprar", new { area = "" }, new { @class = "navbar-brand" })</li>
                 <li>@Html.ActionLink("Vender", "Dashboard", "Vender", new { area = "" }, new { @class = "navbar-brand" })</li>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li>@User.Identity.Name</li>
-                    <li>
-                        @Html.ActionLink("LogOut", "LogOut", "User", new { area = "" }, new { @class = "navbar-brand" })
-                    </li>
-                    
-                }
-                else
-                {
-                    <li>
-                        @Html.ActionLink("LogIn", "LogIn", "User", new { area = "" }, new { @class = "navbar-brand" })
-                    </li>
-                                    <li>
-                                        @Html.ActionLink("Registrar-se", "Register", "User", new { area = "" }, new { @class = "navbar-brand" })
-                                    </li>
-                }
+                <li>@User.Identity.Name</li>
+                <li>@Html.ActionLink("LogOut", "LogOut", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Home", "Home", "Comprar", new { area = "" }, new { @class = "navbar-brand" })</li>
+                <li> @Html.ActionLink("LogIn", "LogIn", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+                 <li>@Html.ActionLink("Registrar-se", "Register", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+            }
             </ul>
         </div>
     </nav>
