@@ -87,7 +87,7 @@ namespace Fiap.Leilao.Web.Controllers
                 var identity = await userManager.CreateIdentityAsync(
                 user, DefaultAuthenticationTypes.ApplicationCookie);
                 GetAuthenticationManager().SignIn(identity);
-                return RedirectToAction("LogIn", "User");
+                return RedirectToAction("Dashboard", "Usuario");
             }
             foreach (var error in result.Errors)
             {
