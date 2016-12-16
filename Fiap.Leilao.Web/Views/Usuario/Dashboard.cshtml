@@ -69,18 +69,18 @@
                         @using (Html.BeginForm("AceitaProposta", "Usuario"))
                         {
                             <input type="hidden" id="produtoId2" name="produtoId2" />
-                            <button type="submit" class="btn btn-success" id="botaoVender">Aceitar</button>
+                            <button type="submit" class="btn-oferta" id="botaoVender">Aceitar</button>
                         }
                     </div>
                     <div class="col-md-3">
                         @using (Html.BeginForm("RecusaProposta", "Usuario"))
                         {
                             <input type="hidden" id="produtoId" name="produtoId" />
-                            <button type="submit" class="btn btn-warning" id="botaoRecusar">Recusar</button>
+                            <button type="submit" class="botaolaranja" id="botaoRecusar">Recusar</button>
                         }
                     </div>
                     <div class="col-md-3">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+                        <button type="button" class="btn-cancelar" data-dismiss="modal">Sair</button>
                     </div>
                 </div>
 

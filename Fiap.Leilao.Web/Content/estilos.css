@@ -347,8 +347,8 @@ p.oferta-modal {
     border:1px solid #D2D2D2;
 }
 
-.btn-oferta {
-     height: 52px;
+.btn-oferta:hover {
+    text-decoration:none;
     padding: 8px;
     background-color: #82c784;
     color:white;
@@ -356,8 +356,18 @@ p.oferta-modal {
     font-size:12px;
 }
 
+.btn-oferta {
+
+    padding: 8px;
+    background-color: #82c784;
+    color:white;
+    border:0;
+    font-size:12px;
+}
+
+
  .btn-cancelar {
-     height: 52px;
+
     padding: 8px;
     background-color: #e57373;
     color:white;
@@ -660,4 +670,26 @@ div.cadastrotopo div.header-cadastro{
 .deslogado {
     font-size:12px;
 
+}
+
+.textareaformatacao {
+    height:120px;
+}
+
+.botaolaranja {
+
+    padding: 8px;
+    background-color: #f0ad4e;
+    color:white;
+    border:0;
+    font-size:12px;
+}
+
+.botaovermelho {
+
+    padding: 8px;
+    background-color: #f0ad4e;
+    color:white;
+    border:0;
+    font-size:12px;
 }
