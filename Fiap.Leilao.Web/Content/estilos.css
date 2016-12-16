@@ -654,3 +654,10 @@ div.cadastrotopo div.header-cadastro{
     margin: 27px 0 0 70px !important;
     vertical-align: top;
 }
+
+
+/* CORREÇÃO DA PAGINA HOME BOTAO FAÇA LOGIN */
+.deslogado {
+    font-size:12px;
+
+}
