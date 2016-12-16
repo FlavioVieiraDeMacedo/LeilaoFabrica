@@ -22,7 +22,7 @@
                 <li>@Html.ActionLink("Painel", "Dashboard", "Usuario", new { area = "" }, new { @class = "navbar-brand" })</li>
                 <li>@Html.ActionLink("Comprar", "Dashboard", "Comprar", new { area = "" }, new { @class = "navbar-brand" })</li>
                 <li>@Html.ActionLink("Vender", "Dashboard", "Vender", new { area = "" }, new { @class = "navbar-brand" })</li>
-                <li class="logado">@User.Identity.Name</li>
+                <li class="logado">Olá! @User.Identity.Name</li>
                 <li>@Html.ActionLink("Sair", "LogOut", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
             }
             else
