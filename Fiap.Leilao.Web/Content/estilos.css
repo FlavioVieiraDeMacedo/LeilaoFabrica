@@ -646,3 +646,11 @@ div.cadastrotopo div.header-cadastro{
 .overflowbutton {
     overflow:hidden;
 }
+
+/*NAV BAR*/
+.logado {
+    color: #428BCA;
+    padding: 0px !important;
+    margin: 27px 0 0 70px !important;
+    vertical-align: top;
+}
